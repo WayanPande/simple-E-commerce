@@ -1,5 +1,5 @@
 <footer class=" text-muted text-center my-5 pt-5">
-    <p>Created with <ion-icon name="heart" class="text-danger"></ion-icon> by <a href="" class="text-muted fw-bold">Wayan
+    <p>Created with <ion-icon name="heart" class="text-danger"></ion-icon> by <a href="#" class="text-muted fw-bold">Wayan
             Pande</a></p>
 </footer>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>

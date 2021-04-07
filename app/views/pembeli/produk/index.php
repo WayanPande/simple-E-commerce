@@ -61,6 +61,10 @@
                             <td><?= $prd['Harga_Jual']; ?></td>
                             <td>
                                 <a href="<?= BASEURL; ?>/produk/keranjang/<?= $prd['ProdukID']; ?>" onclick="return confirm('yakin?');"><span class="badge bg-secondary">Tambah</span></a>
+                                <div class="input-group input-group-sm" style="width: 200px">
+                                    <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
+                                </div>
                             </td>
                         </tr>
                     <?php endforeach; ?>

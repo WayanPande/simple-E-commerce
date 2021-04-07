@@ -17,7 +17,7 @@
                         <li class="list-group-item d-flex justify-content-between lh-sm">
                             <div>
                                 <h6 class="my-0"><?= $krj['Nama_Produk']; ?></h6>
-                                <small class="text-muted"><span class="badge bg-danger">hapus</span></small>
+                                <a class="text-muted btn btn-sm" href="<?= BASEURL; ?>/produk/hapusDataKeranjang/<?= $krj['ProdukID']; ?>/<?= $krj['akun_id']; ?>" role="button"><span class="badge bg-danger">hapus</span></a>
                             </div>
                             <span class="text-muted">Rp <?= $krj['Harga']; ?></span>
                         </li>
