@@ -93,12 +93,23 @@ class Produk extends Controller
         if ($this->modelPembeli('Keranjang_model')->tambah($id) > 0) {
 
             // Flasher::setFlash('berhasil', 'dihapus', 'success');
-            echo "
-            <script>
-                alert('Login Berhasil');
-            </script>";
             $_SESSION['keranjang'] = $this->modelPembeli('Keranjang_model')->totalBarang();
             header('Location: ' . BASEURL . '/produk/indexPembeli');
+            exit;
+        } else {
+            echo "
+            <script>
+                alert('Login Gagal');
+            </script>";
+        }
+    }
+
+    public function hapusDataKeranjang($id, $akun)
+    {
+        if ($this->modelPembeli('Keranjang_model')->hapusDataKeranjang($id, $akun) > 0) {
+
+            // Flasher::setFlash('berhasil', 'dihapus', 'success');
+            header('Location: ' . BASEURL . '/checkout');
             exit;
         } else {
             echo "
