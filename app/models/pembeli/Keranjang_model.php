@@ -65,4 +65,16 @@ class Keranjang_model
         $this->db->query($query);
         return $this->db->resultSet();
     }
+
+    public function hapusDataKeranjang($id, $akun)
+    {
+        $query = "DELETE FROM " . $this->table . " WHERE ProdukID = :id AND akun_id = :akun";
+        $this->db->query($query);
+        $this->db->bind('id', $id);
+        $this->db->bind('akun', $akun);
+
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
 }
