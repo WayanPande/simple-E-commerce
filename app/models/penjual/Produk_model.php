@@ -32,7 +32,7 @@ class Produk_model
         $penjualid =  $_SESSION['user']['user'][0]['akun_id'];
         $query = "INSERT INTO produk
                     VALUES
-                (:produkid, :nama, :stok, :id_kategori, :hargaJual, :hargaBeli, :penjualid)";
+                (:produkid, :nama, :stok, :id_kategori, :hargaJual, :hargaBeli, :penjualid, CURRENT_TIMESTAMP)";
         // $query = "INSERT INTO produk
         //             VALUES
         //         ('PR005', 'Teh', '23', 'K0003', '2000', '1000', 'USR0005')";

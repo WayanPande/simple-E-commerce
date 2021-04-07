@@ -37,4 +37,8 @@ $(function () {
       }, false)
     })
     
+    function myFunction() {
+      console.log('ok')
+    }
+
 });

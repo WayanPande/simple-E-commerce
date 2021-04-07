@@ -11,4 +11,15 @@ class Checkout extends Controller
         $this->viewPembeli('checkout/index', $data);
         $this->viewPembeli('templates/footer');
     }
+
+    public function order()
+    {
+        $keranjang = $this->modelPembeli('Keranjang_model')->queryAllKeranjang();
+        $this->modelPembeli('Checkout_model')->orderBarang($keranjang);
+    }
+
+    public function inputOrder()
+    {
+        var_dump($_POST);
+    }
 }

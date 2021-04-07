@@ -52,7 +52,6 @@
                         <th scope="col">ID Kategori</th>
                         <th scope="col">Harga Jual</th>
                         <th scope="col">Harga Beli</th>
-                        <th scope="col">ID Penjual</th>
                         <th scope="col">Aksi</th>
                     </tr>
                 </thead>
@@ -65,7 +64,6 @@
                             <td><?= $prd['KategoriID']; ?></td>
                             <td><?= $prd['Harga_Jual']; ?></td>
                             <td><?= $prd['Harga_Beli']; ?></td>
-                            <td><?= $prd['PenjualID']; ?></td>
                             <td>
                                 <a href="<?= BASEURL; ?>/produk/hapus/<?= $prd['ProdukID']; ?>" onclick="return confirm('yakin?');"><span class="badge bg-secondary">Hapus</span></a>
                             </td>
