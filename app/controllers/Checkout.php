@@ -14,8 +14,18 @@ class Checkout extends Controller
 
     public function order()
     {
+        // var_dump($_POST);
         $keranjang = $this->modelPembeli('Keranjang_model')->queryAllKeranjang();
-        $this->modelPembeli('Checkout_model')->orderBarang($keranjang);
+
+        if ($this->modelPembeli('Checkout_model')->orderBarang($keranjang, $_POST) > 0) {
+            header('Location: ' . BASEURL . '/checkout');
+            exit;
+        } else {
+            echo "
+                <script>
+                    alert('Order Gagal');
+                </script>";
+        }
     }
 
     public function inputOrder()

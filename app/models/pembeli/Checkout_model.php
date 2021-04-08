@@ -11,15 +11,28 @@ class Checkout_model
         $this->db = new Database;
     }
 
-    public function orderBarang($data)
+    public function orderBarang($data, $post)
     {
         foreach ($data as $br) {
             $idTransaksi = $this->ambilProdukID();
             $tglPembelian = $this->tglPembelian($br['ProdukID']);
 
-            var_dump($idTransaksi);
-            var_dump($tglPembelian);
+            $query = "INSERT INTO transaksi
+                        VALUES
+                        (:idTransaksi,  CURRENT_TIMESTAMP, :TglPembelian, :ProdukID, :kuantitas, :harga, :akunID, :pengirimID)";
+
+            $this->db->query($query);
+            $this->db->bind('idTransaksi', $idTransaksi);
+            $this->db->bind('TglPembelian', $tglPembelian['Tgl_Pembelian']);
+            $this->db->bind('ProdukID', $br['ProdukID']);
+            $this->db->bind('kuantitas', $br['kuantitas']);
+            $this->db->bind('harga', $br['Harga']);
+            $this->db->bind('akunID', $br['akun_id']);
+            $this->db->bind('pengirimID', $post['pengirim']);
+
+            $this->db->execute();
         }
+        return $this->db->rowCount();
     }
 
     public function ambilProdukID()

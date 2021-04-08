@@ -2,11 +2,6 @@
 
 <div class="container mt-3">
     <h1>Daftar Produk</h1>
-    <div class="row justify-content-start">
-        <div class="col-6">
-            <?php Flasher::flash(); ?>
-        </div>
-    </div>
     <div class="row justify-content-between mt-3">
         <div class="col-4">
             <form class="d-flex" method="post" action="<?= BASEURL; ?>/produk/cariPembeli">
@@ -15,7 +10,11 @@
             </form>
         </div>
     </div>
-
+    <div class="row justify-content-start mt-3">
+        <div class="col-6">
+            <?php Flasher::flash(); ?>
+        </div>
+    </div>
     <div class="row justify-content-start mt-5">
         <!-- <div class="col-lg-6">
             <table class="table table-bordered border-dark mp-t5 table-hover" id="container">
@@ -59,23 +58,14 @@
                                 <td><?= $prd['Stok']; ?></td>
                                 <td><?= $prd['Harga_Jual']; ?></td>
                                 <td class="text-center">
-                                    <a class="badge bg-danger" href="<?= BASEURL; ?>/produk/keranjang/<?= $prd['ProdukID']; ?>" onclick="return confirm('yakin?');">Tambah</a>
-                                    <a href="" class="badge bg-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">detail</a>
+                                    <!-- <a class="badge bg-danger" href="<?= BASEURL; ?>/produk/keranjang/<?= $prd['ProdukID']; ?>" onclick="return confirm('yakin?');">Tambah</a> -->
+                                    <a href="<?= BASEURL; ?>/produk/detail/<?= $prd['ProdukID']; ?>" class="badge bg-primary">detail</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
                         </tr>
                     </tbody>
                 </table>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
             </div>
         </div>
     </div>

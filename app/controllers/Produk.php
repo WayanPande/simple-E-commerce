@@ -90,10 +90,11 @@ class Produk extends Controller
 
     public function keranjang($id)
     {
-        if ($this->modelPembeli('Keranjang_model')->tambah($id) > 0) {
 
-            // Flasher::setFlash('berhasil', 'dihapus', 'success');
+        if ($this->modelPembeli('Keranjang_model')->tambah($id, $_POST['jumlah']) > 0) {
+
             $_SESSION['keranjang'] = $this->modelPembeli('Keranjang_model')->totalBarang();
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
             header('Location: ' . BASEURL . '/produk/indexPembeli');
             exit;
         } else {
@@ -108,6 +109,7 @@ class Produk extends Controller
     {
         if ($this->modelPembeli('Keranjang_model')->hapusDataKeranjang($id, $akun) > 0) {
 
+            $_SESSION['keranjang'] = $this->modelPembeli('Keranjang_model')->totalBarang();
             // Flasher::setFlash('berhasil', 'dihapus', 'success');
             header('Location: ' . BASEURL . '/checkout');
             exit;
@@ -117,5 +119,14 @@ class Produk extends Controller
                 alert('Login Gagal');
             </script>";
         }
+    }
+
+    public function detail($id)
+    {
+        $data['judul'] = 'Detail Produk';
+        $data['produk'] = $this->modelPembeli('Keranjang_model')->cariDataProduk($id);
+        $this->viewPembeli('templates/header', $data);
+        $this->viewPembeli('produk/detail', $data);
+        $this->viewPembeli('templates/footer');
     }
 }

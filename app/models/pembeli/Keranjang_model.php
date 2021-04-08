@@ -11,21 +11,24 @@ class Keranjang_model
         $this->db = new Database;
     }
 
-    public function tambah($data)
+    public function tambah($data, $jumlah)
     {
         $akun = $_SESSION['user']['user'][0]['akun_id'];
         $dataProduk = $this->cariDataProduk($data);
+        $jumlah = (int) $jumlah;
+        $harga = $jumlah *  $dataProduk[0]['Harga_Jual'];
 
         $query = "INSERT INTO keranjang
                     VALUES
-                (:produkid, :nama, :harga, :akunID)";
+                (:produkid, :nama, :harga, :akunID, :jumlah)";
 
 
         $this->db->query($query);
         $this->db->bind('produkid', $data);
         $this->db->bind('nama', $dataProduk[0]['Nama_Produk']);
-        $this->db->bind('harga', $dataProduk[0]['Harga_Jual']);
+        $this->db->bind('harga', $harga);
         $this->db->bind('akunID', $akun);
+        $this->db->bind('jumlah', $jumlah);
 
         $this->db->execute();
 
@@ -71,6 +74,18 @@ class Keranjang_model
         $query = "DELETE FROM " . $this->table . " WHERE ProdukID = :id AND akun_id = :akun";
         $this->db->query($query);
         $this->db->bind('id', $id);
+        $this->db->bind('akun', $akun);
+
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
+
+    public function hapusSemuaDataKeranjang($akun)
+    {
+
+        $query = "DELETE FROM " . $this->table . " WHERE akun_id = :akun";
+        $this->db->query($query);
         $this->db->bind('akun', $akun);
 
         $this->db->execute();

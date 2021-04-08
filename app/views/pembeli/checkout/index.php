@@ -16,9 +16,8 @@
                     <?php foreach ($data['keranjang'] as $krj) : ?>
                         <li class="list-group-item d-flex justify-content-between lh-sm">
                             <div>
-                                <h6 class="my-0" id="nama_barang"><?= $krj['Nama_Produk']; ?> x 1</h6>
+                                <h6 class="my-0" id="nama_barang"><?= $krj['Nama_Produk']; ?> x <?= $krj['kuantitas']; ?></h6>
                                 <a class="text-muted btn btn-sm" href="<?= BASEURL; ?>/produk/hapusDataKeranjang/<?= $krj['ProdukID']; ?>/<?= $krj['akun_id']; ?>" role="button"><span class="badge bg-danger">hapus</span></a>
-                                <ion-icon class="tambah" name="add-circle-outline" onclick="myFunction()"></ion-icon>
                             </div>
                             <span class="text-muted">Rp <?= $krj['Harga']; ?></span>
                         </li>
@@ -38,7 +37,7 @@
             </div>
             <div class="col-md-7 col-lg-8">
                 <h4 class="mb-3">Billing address</h4>
-                <form class="needs-validation" novalidate method="post" action="<?= BASEURL; ?>/checkout/inputOrder">
+                <form class="needs-validation" novalidate method="post" action="<?= BASEURL; ?>/checkout/order">
                     <div class="row g-3">
                         <div class="col-12">
                             <label for="firstName" class="form-label">Name</label>
