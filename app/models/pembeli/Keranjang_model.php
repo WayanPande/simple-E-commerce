@@ -80,16 +80,4 @@ class Keranjang_model
 
         return $this->db->rowCount();
     }
-
-    public function hapusSemuaDataKeranjang($akun)
-    {
-
-        $query = "DELETE FROM " . $this->table . " WHERE akun_id = :akun";
-        $this->db->query($query);
-        $this->db->bind('akun', $akun);
-
-        $this->db->execute();
-
-        return $this->db->rowCount();
-    }
 }

@@ -5,7 +5,8 @@ class Home extends Controller
     public function indexPenjual()
     {
         $data['judul'] = 'Home';
-        // $data['nama'] = $this->model('User_model')->getUser();
+        $data['transaksi'] = $this->modelPenjual('Produk_model')->getAllOrder();
+        // var_dump($data['transaksi']);
         $this->viewPenjual('templates/header', $data);
         $this->viewPenjual('home/index', $data);
         $this->viewPenjual('templates/footer');

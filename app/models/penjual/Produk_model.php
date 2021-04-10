@@ -14,7 +14,10 @@ class Produk_model
 
     public function getAllProduk()
     {
-        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE PenjualID=:id');
+        $query = "SELECT produk.ProdukID, produk.Nama_Produk, produk.Stok,kategori.Nama_Kategori, produk.Harga_Jual, produk.Harga_Beli FROM produk INNER JOIN kategori ON produk.KategoriID = kategori.KategoriID WHERE PenjualID=:id";
+        // $this->db->query('SELECT * FROM ' . $this->table . ' WHERE PenjualID=:id');
+        $this->db->query($query);
+
         $this->db->bind('id', $_SESSION['user']['user'][0]['akun_id']);
         return $this->db->resultSet();
     }
@@ -88,6 +91,14 @@ class Produk_model
         $query = "SELECT * FROM " . $this->table . " WHERE ProdukID LIKE '%$data%' OR Nama_Produk LIKE '%$data%' OR Stok LIKE '%$data%' OR KategoriID LIKE '%$data%' OR Harga_Jual LIKE '%$data%' OR Harga_Beli LIKE '%$data%'";
 
         $this->db->query($query);
+        return $this->db->resultSet();
+    }
+
+    public function getAllOrder()
+    {
+        $query = "SELECT id_transaksi, DATE(Tgl_Penjualan) AS tanggal, TIME(Tgl_Penjualan) AS jam, TotalHarga FROM transaksi INNER JOIN produk ON transaksi.ProdukID = produk.ProdukID WHERE produk.PenjualID = :id ORDER BY tanggal DESC";
+        $this->db->query($query);
+        $this->db->bind('id', $_SESSION['user']['user'][0]['akun_id']);
         return $this->db->resultSet();
     }
 }

@@ -16,8 +16,11 @@ class Checkout extends Controller
     {
         // var_dump($_POST);
         $keranjang = $this->modelPembeli('Keranjang_model')->queryAllKeranjang();
-
+        // var_dump($keranjang);
         if ($this->modelPembeli('Checkout_model')->orderBarang($keranjang, $_POST) > 0) {
+            $this->modelPembeli('Checkout_model')->updateKuantitasBarang($keranjang);
+            $this->modelPembeli('Checkout_model')->hapusSemuaDataKeranjang($keranjang[0]['akun_id']);
+            $_SESSION['keranjang'] = $this->modelPembeli('Keranjang_model')->totalBarang();
             header('Location: ' . BASEURL . '/checkout');
             exit;
         } else {
@@ -26,10 +29,5 @@ class Checkout extends Controller
                     alert('Order Gagal');
                 </script>";
         }
-    }
-
-    public function inputOrder()
-    {
-        var_dump($_POST);
     }
 }

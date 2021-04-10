@@ -37,7 +37,7 @@
                     <div class="col-3">
                         <div class="btn-group" role="group" aria-label="Basic example">
                             <!-- <button type="button" class="btn btn-light" id="kurang">-</button> -->
-                            <input type="number" class="form-control" name="jumlah" style="width: 70px;" value="1" id="jumlah">
+                            <input type="number" class="form-control" name="jumlah" style="width: 70px;" value="1" id="jumlah" min="1" max="<?= $data['produk'][0]['Stok']; ?>">
                             <!-- <button type="button" class="btn btn-secondary" id="tambah">+</button> -->
                         </div>
                     </div>

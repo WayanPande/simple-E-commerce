@@ -63,4 +63,28 @@ class Checkout_model
         $this->db->bind('id', $id);
         return $this->db->single();
     }
+
+    public function hapusSemuaDataKeranjang($akun)
+    {
+
+        $query = "DELETE FROM keranjang WHERE akun_id = :akun";
+        $this->db->query($query);
+        $this->db->bind('akun', $akun);
+
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
+
+    public function updateKuantitasBarang($data)
+    {
+        foreach ($data as $br) {
+            $query = "UPDATE produk SET stok = (stok - :stok) WHERE ProdukID = :id";
+            $this->db->query($query);
+            $this->db->bind('stok', $br['kuantitas']);
+            $this->db->bind('id', $br['ProdukID']);
+            $this->db->execute();
+        }
+        return $this->db->rowCount();
+    }
 }
