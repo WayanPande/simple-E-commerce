@@ -9,6 +9,7 @@
     <!-- custom css -->
 
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="<?= BASEURL; ?>/css/styles.css">
 </head>
 
@@ -43,23 +44,19 @@
                         <i class='bx bx-grid-alt nav__icon'></i>
                         <span class="nav__name">Dashboard</span>
                     </a>
-
+                    <!-- 
                     <a href="<?= BASEURL; ?>/about" class="nav__link__message">
                         <i class='bx bx-message-square-detail nav__icon'></i>
                         <span class="nav__name">About</span>
-                    </a>
+                    </a> -->
 
                     <a href="<?= BASEURL; ?>/produk" class="nav__link">
-                        <i class='bx bx-bookmark nav__icon'></i>
+                        <!-- <i class='bx bx-bookmark nav__icon'></i> -->
+                        <i class="bi bi-bag-check nav__icon"></i>
                         <span class="nav__name">Produk</span>
                     </a>
 
-                    <a href="#" class="nav__link">
-                        <i class='bx bx-folder nav__icon'></i>
-                        <span class="nav__name">Data</span>
-                    </a>
-
-                    <a href="#" class="nav__link">
+                    <a href="<?= BASEURL; ?>/analytics" class="nav__link">
                         <i class='bx bx-bar-chart-alt-2 nav__icon'></i>
                         <span class="nav__name">Analytics</span>
                     </a>

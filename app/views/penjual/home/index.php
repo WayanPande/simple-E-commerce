@@ -1,3 +1,10 @@
+<?php
+
+if (!isset($data['jumlah_order'][0]['pendapatan'])) {
+    $data['jumlah_order'][0]['pendapatan'] = 0;
+}
+
+?>
 <br>
 <div class="container">
     <div class="col-lg-12 mt-5">
@@ -16,13 +23,14 @@
         <div class="col-lg-3">
             <div class="card h-100 text-white bg-primary">
                 <div class="row g-0">
-                    <div class="col-md-4 mt-4">
-                        <ion-icon name="chatbubbles" style="font-size: 100px;"></ion-icon>
+                    <div class="col-md-4 mt-3">
+                        <!-- <ion-icon name="chatbubbles" style="font-size: 100px;"></ion-icon> -->
+                        <i class="bi bi-cart-fill ms-4" style="font-size: 90px;"></i>
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <p class="card-title text-end" style="font-size: 50px;">456</p>
-                            <p class="text-end">New Mentions!</p>
+                            <p class="card-title text-end" style="font-size: 50px;"><?= $data['jumlah_order'][0]['jumlah']; ?></p>
+                            <p class="text-end">New Order!</p>
                         </div>
                     </div>
                 </div>
@@ -34,13 +42,14 @@
         <div class="col-lg-3">
             <div class="card h-100 text-white bg-secondary">
                 <div class="row g-0">
-                    <div class="col-md-4 mt-4">
-                        <ion-icon name="checkmark-sharp" style="font-size: 100px;"></ion-icon>
+                    <div class="col-md-4 mt-3">
+                        <!-- <ion-icon name="checkmark-sharp" style="font-size: 100px;"></ion-icon> -->
+                        <i class="bi bi-wallet2 ms-4" style="font-size: 80px;"></i>
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <p class="card-title text-end" style="font-size: 50px;">456</p>
-                            <p class="text-end">New Mentions!</p>
+                            <p class="card-title text-end" style="font-size: 50px;"><?= $data['jumlah_order'][0]['pendapatan']; ?></p>
+                            <p class="text-end">Total Expenses</p>
                         </div>
                     </div>
                 </div>
@@ -103,7 +112,7 @@
     <div class="row mt-4">
         <div class="col-lg-4">
             <div class="card">
-                <div class="card-header bg-primary text-white">
+                <div class="card-header bg-primary text-white pt-0 pb-0">
                     <p class="text-start mt-3" style="font-size: 20px;">
                         <ion-icon name="pricetag-sharp"></ion-icon> Recent Transaction
                     </p>
@@ -130,6 +139,9 @@
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
+                    </div>
+                    <div class="text-end">
+                        <a href="">View All Transactions <i class="bi bi-arrow-right-circle-fill"></i></ion-icon></a>
                     </div>
                 </div>
             </div>

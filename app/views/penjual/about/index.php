@@ -1,10 +1,15 @@
 <br>
 <div class="container">
     <h1 class="mt-4 mb-4">About Me</h1>
+    <div class="row justify-content-start">
+        <div class="col-6">
+            <?php Flasher::flash(); ?>
+        </div>
+    </div>
     <div class="row">
         <div class="col-lg-4 text-center">
             <ion-icon name="person-circle" style="font-size: 250px;"></ion-icon>
-            <p><?= $data['nama']; ?></p>
+            <p><?= $data['akun'][0]['nama']; ?></p>
             <div class="d-grid gap-2 col-7 mx-auto">
                 <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit profile</button>
             </div>
@@ -13,19 +18,19 @@
             <label for="firstName" class="form-label fw-bold fs-2 mt-3">Profile</label>
             <br>
             <label for="firstName" class="form-label mt-3">Nama</label>
-            <p class="mt-2">email@example.com</p>
+            <p class="mt-2"><?= $data['akun'][0]['nama']; ?></p>
             <hr class="my-1">
             <br>
             <label for="firstName" class="form-label mt-3">Alamat</label>
-            <p class="mt-2">email@example.com</p>
+            <p class="mt-2"><?= $data['akun'][0]['alamat']; ?></p>
             <hr class="my-1">
             <br>
             <label for="firstName" class="form-label mt-3">No Hp</label>
-            <p class="mt-2">email@example.com</p>
+            <p class="mt-2"><?= $data['akun'][0]['NoHp']; ?></p>
             <hr class="my-1">
             <br>
             <label for="firstName" class="form-label mt-3">Email</label>
-            <p class="mt-2">email@example.com</p>
+            <p class="mt-2"><?= $data['akun'][0]['email']; ?></p>
             <hr class="my-1">
         </div>
 
@@ -45,12 +50,41 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                ...
+                <form action="<?= BASEURL; ?>/about/update" method="post" class="needs-validation" novalidate>
+                    <div class="form-group">
+                        <label for="nama">Nama</label>
+                        <input type="text" class="form-control" id="nama" name="nama" value="<?= $data['akun'][0]['nama']; ?>" required>
+                        <div class="invalid-feedback">
+                            Silahkan isi nama anda.
+                        </div>
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="alamat">alamat</label>
+                        <input type="text" class="form-control" id="alamat" name="alamat" value="<?= $data['akun'][0]['alamat']; ?>" required>
+                        <div class="invalid-feedback">
+                            Silahkan isi alamat anda.
+                        </div>
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="NoHp">NoHp</label>
+                        <input type="text" class="form-control" id="NoHp" name="NoHp" value="<?= $data['akun'][0]['NoHp']; ?>" required>
+                        <div class="invalid-feedback">
+                            Silahkan isi NoHp anda.
+                        </div>
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="email">Email</label>
+                        <input type="text" class="form-control" id="email" name="email" value="<?= $data['akun'][0]['email']; ?>" required>
+                        <div class="invalid-feedback">
+                            Silahkan isi email anda.
+                        </div>
+                    </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
             </div>
+            </form>
         </div>
     </div>
 </div>

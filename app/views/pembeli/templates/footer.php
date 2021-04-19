@@ -1,6 +1,5 @@
 <footer class=" text-muted text-center my-5 pt-5">
-    <p>Created with <ion-icon name="heart" class="text-danger"></ion-icon> by <a href="#" class="text-muted fw-bold">Wayan
-            Pande</a></p>
+    <p>Created with <ion-icon name="heart" class="text-danger"></ion-icon> by <a href="#" class="text-muted fw-bold">Kelompok 2</a></p>
 </footer>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>

@@ -6,6 +6,7 @@ class Home extends Controller
     {
         $data['judul'] = 'Home';
         $data['transaksi'] = $this->modelPenjual('Produk_model')->getAllOrder();
+        $data['jumlah_order'] = $this->modelPenjual('Produk_model')->getJumlahOrder();
         // var_dump($data['transaksi']);
         $this->viewPenjual('templates/header', $data);
         $this->viewPenjual('home/index', $data);

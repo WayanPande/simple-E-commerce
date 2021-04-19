@@ -43,20 +43,25 @@ if (isset($_POST["login"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Halaman <?= $data['judul']; ?></title>
     <link rel="stylesheet" href="<?= BASEURL; ?>/css/bootstrap.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 </head>
 
-<body>
+<body style="background-color: #E3F7F7;">
     <!-- FORM LOGIN -->
     <section id="contact">
         <div class="container">
-            <div class="row text-center mb-3 mt-5">
+            <div class="row text-center mt-5 pt-5">
+                <i class='bx bx-layer bx-tada-hover' style="font-size: 90px;"></i>
+            </div>
+            <div class="row text-center mb-3 mt-3">
                 <div class="col">
-                    <h2>Login</h2>
+                    <h2>Please sign in</h2>
                 </div>
             </div>
             <div class="row justify-content-center">
-                <div class="col-md-6">
+                <div class="col-md-5">
                     <?php if (isset($user)) : ?>
                         <div class="alert alert-warning alert-dismissible fade show" role="alert">
                             <strong>Username tidak ditemukan!</strong> Ulangi input username.
@@ -64,29 +69,48 @@ if (isset($_POST["login"])) {
                         </div>
                     <?php elseif (isset($pass)) : ?>
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <strong>Password salah!</strong> Ulangi input username.
+                            <strong>Password salah!</strong> Ulangi input password.
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     <?php endif; ?>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-3">
                     <form name="portfolio-contact-form" method="post" class="needs-validation">
-                        <div class="mb-3">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" name="username" id="username" required>
+                            <label for="floatingInput">Username</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" id="password" required>
+                            <label for="floatingPassword">Password</label>
+                        </div>
+                        <!-- <div class="mb-3">
                             <label for="name" class="form-label">Username</label>
                             <input type="text" class="form-control" aria-describedby="name" name="username" id="username" required>
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Password</label>
                             <input type="password" class="form-control" aria-describedby="email" name="password" id="password" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-kirim" name="login">Kirim</button>
-                        <br><br>
-                        <!-- Button trigger modal -->
+                        </div> -->
+                        <div class="row mt-5">
+                            <div class="d-grid gap-2 col-12">
+                                <button type="submit" class="btn btn-primary btn-kirim" name="login">Sign in</button>
 
-                        <p>Don't have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#registrasi" class="text-decoration-none">Sign up now</a>.</p>
+                                <!-- Button trigger modal -->
+
+                                <p>Don't have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#registrasi" class="text-decoration-none">Sign up now</a>.</p>
+                            </div>
+
+                        </div>
+
                     </form>
                 </div>
             </div>
         </div>
     </section>
+
 
     <!-- Modal -->
     <div class="modal fade" id="registrasi" tabindex="-1" aria-labelledby="judulModal" aria-hidden="true">

@@ -1,6 +1,6 @@
 <?php
 
-define('BASEURL', 'http://localhost/test/public');
+define('BASEURL', 'http://localhost/supermart/public');
 
 // DB
 define('DB_HOST', 'localhost');

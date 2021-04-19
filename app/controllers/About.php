@@ -3,12 +3,11 @@
 class About extends Controller
 {
 
-    public function index($nama = "Lojik", $pekerjaan = "wadidwa", $umur = 12)
+    public function index()
     {
-        $data['nama'] = $nama;
-        $data['pekerjaan'] = $pekerjaan;
-        $data['umur'] = $umur;
         $data['judul'] = 'About';
+        $data['akun'] = $this->modelPenjual('User_model')->detailUser();
+        // var_dump($data['akun']);
 
         $this->viewPenjual('templates/header', $data);
         $this->viewPenjual('about/index', $data);
@@ -21,5 +20,20 @@ class About extends Controller
         $this->viewPenjual('templates/header', $data);
         $this->viewPenjual('about/page');
         $this->viewPenjual('templates/footer');
+    }
+
+    public function update()
+    {
+        // var_dump($_POST);
+        if ($this->modelPenjual('User_model')->updateUser($_POST) > 0) {
+
+            Flasher::setFlash('Profile', 'berhasil', 'diupdate', 'success');
+            header('Location: ' . BASEURL . '/about');
+            exit;
+        } else {
+            Flasher::setFlash('Profile', 'gagal', 'diupdate', 'danger');
+            header('Location: ' . BASEURL . '/about');
+            exit;
+        }
     }
 }

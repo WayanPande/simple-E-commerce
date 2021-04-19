@@ -34,7 +34,7 @@ class Produk extends Controller
         // var_dump($_POST);
         if ($this->modelPenjual('Produk_model')->tambahDataProduk($_POST) > 0) {
 
-            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            Flasher::setFlash('Produk', 'berhasil', 'ditambahkan', 'success');
             echo "
             <script>
                 alert('Login Berhasil');
@@ -53,7 +53,7 @@ class Produk extends Controller
     {
         if ($this->modelPenjual('Produk_model')->hapusDataProduk($id) > 0) {
 
-            Flasher::setFlash('berhasil', 'dihapus', 'success');
+            Flasher::setFlash('Produk', 'berhasil', 'dihapus', 'success');
             echo "
             <script>
                 alert('Login Berhasil');
@@ -94,7 +94,7 @@ class Produk extends Controller
         if ($this->modelPembeli('Keranjang_model')->tambah($id, $_POST['jumlah']) > 0) {
 
             $_SESSION['keranjang'] = $this->modelPembeli('Keranjang_model')->totalBarang();
-            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            Flasher::setFlash('Produk', 'berhasil', 'ditambahkan', 'success');
             header('Location: ' . BASEURL . '/produk/indexPembeli');
             exit;
         } else {
