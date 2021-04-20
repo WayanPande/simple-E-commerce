@@ -9,6 +9,7 @@
     <!-- custom css -->
 
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="<?= BASEURL; ?>/css/styles.css">
 </head>
 
@@ -50,7 +51,7 @@
                         <span class="nav__name">Dashboard</span>
                     </a>
 
-                    <a href="<?= BASEURL; ?>/produk/indexPembeli" class="nav__link">
+                    <a href="<?= BASEURL; ?>/produk/all" class="nav__link">
                         <i class='bx bx-bookmark nav__icon'></i>
                         <span class="nav__name">Produk</span>
                     </a>

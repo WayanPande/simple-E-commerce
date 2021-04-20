@@ -11,7 +11,7 @@ class Produk extends Controller
         $this->viewPenjual('templates/footer');
     }
 
-    public function indexPembeli()
+    public function all()
     {
         $data['judul'] = 'Daftar Produk';
         $data['produk'] = $this->modelPenjual('Produk_model')->getAllProdukPembeli();
@@ -127,6 +127,69 @@ class Produk extends Controller
         $data['produk'] = $this->modelPembeli('Keranjang_model')->cariDataProduk($id);
         $this->viewPembeli('templates/header', $data);
         $this->viewPembeli('produk/detail', $data);
+        $this->viewPembeli('templates/footer');
+    }
+
+    public function bahan_makanan()
+    {
+        $data['judul'] = 'Daftar Bahan Makanan';
+        $data['produk'] = $this->modelPenjual('Produk_model')->getAllProdukPembeli();
+        $this->viewPembeli('templates/header', $data);
+        $this->viewPembeli('produk/bahan_makanan', $data);
+        $this->viewPembeli('templates/footer');
+    }
+
+    public function snack()
+    {
+        $data['judul'] = 'Daftar Snack';
+        $data['produk'] = $this->modelPenjual('Produk_model')->getAllProdukPembeli();
+        $this->viewPembeli('templates/header', $data);
+        $this->viewPembeli('produk/snack', $data);
+        $this->viewPembeli('templates/footer');
+    }
+
+    public function minuman()
+    {
+        $data['judul'] = 'Daftar Minuman';
+        $data['produk'] = $this->modelPenjual('Produk_model')->getAllProdukPembeli();
+        $this->viewPembeli('templates/header', $data);
+        $this->viewPembeli('produk/minuman', $data);
+        $this->viewPembeli('templates/footer');
+    }
+
+    public function obat()
+    {
+        $data['judul'] = 'Daftar Obat-Obatan';
+        $data['produk'] = $this->modelPenjual('Produk_model')->getAllProdukPembeli();
+        $this->viewPembeli('templates/header', $data);
+        $this->viewPembeli('produk/obat', $data);
+        $this->viewPembeli('templates/footer');
+    }
+
+    public function pakaian()
+    {
+        $data['judul'] = 'Daftar Pakaian';
+        $data['produk'] = $this->modelPenjual('Produk_model')->getAllProdukPembeli();
+        $this->viewPembeli('templates/header', $data);
+        $this->viewPembeli('produk/pakaian', $data);
+        $this->viewPembeli('templates/footer');
+    }
+
+    public function atk()
+    {
+        $data['judul'] = 'Daftar ATK';
+        $data['produk'] = $this->modelPenjual('Produk_model')->getAllProdukPembeli();
+        $this->viewPembeli('templates/header', $data);
+        $this->viewPembeli('produk/atk', $data);
+        $this->viewPembeli('templates/footer');
+    }
+
+    public function perabotan()
+    {
+        $data['judul'] = 'Daftar Perabotan';
+        $data['produk'] = $this->modelPenjual('Produk_model')->getAllProdukPembeli();
+        $this->viewPembeli('templates/header', $data);
+        $this->viewPembeli('produk/perabotan', $data);
         $this->viewPembeli('templates/footer');
     }
 }

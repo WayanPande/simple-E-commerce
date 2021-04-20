@@ -1,7 +1,7 @@
 <br>
 
 <div class="container mt-3">
-    <h1>Daftar Produk</h1>
+    <h1>Daftar Produk Perabotan</h1>
     <div class="row justify-content-center mt-3">
         <div class="col-9">
             <form class="d-flex" method="post" action="<?= BASEURL; ?>/produk/cariPembeli">
