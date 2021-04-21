@@ -133,7 +133,7 @@ class Produk extends Controller
     public function bahan_makanan()
     {
         $data['judul'] = 'Daftar Bahan Makanan';
-        $data['produk'] = $this->modelPenjual('Produk_model')->getAllProdukPembeli();
+        $data['produk'] = $this->modelPenjual('Produk_model')->getProdukByKategori("K0001");
         $this->viewPembeli('templates/header', $data);
         $this->viewPembeli('produk/bahan_makanan', $data);
         $this->viewPembeli('templates/footer');
@@ -142,7 +142,7 @@ class Produk extends Controller
     public function snack()
     {
         $data['judul'] = 'Daftar Snack';
-        $data['produk'] = $this->modelPenjual('Produk_model')->getAllProdukPembeli();
+        $data['produk'] = $this->modelPenjual('Produk_model')->getProdukByKategori("K0002");
         $this->viewPembeli('templates/header', $data);
         $this->viewPembeli('produk/snack', $data);
         $this->viewPembeli('templates/footer');
@@ -151,7 +151,7 @@ class Produk extends Controller
     public function minuman()
     {
         $data['judul'] = 'Daftar Minuman';
-        $data['produk'] = $this->modelPenjual('Produk_model')->getAllProdukPembeli();
+        $data['produk'] = $this->modelPenjual('Produk_model')->getProdukByKategori("K0003");
         $this->viewPembeli('templates/header', $data);
         $this->viewPembeli('produk/minuman', $data);
         $this->viewPembeli('templates/footer');
@@ -160,7 +160,7 @@ class Produk extends Controller
     public function obat()
     {
         $data['judul'] = 'Daftar Obat-Obatan';
-        $data['produk'] = $this->modelPenjual('Produk_model')->getAllProdukPembeli();
+        $data['produk'] = $this->modelPenjual('Produk_model')->getProdukByKategori("K0004");
         $this->viewPembeli('templates/header', $data);
         $this->viewPembeli('produk/obat', $data);
         $this->viewPembeli('templates/footer');
@@ -169,7 +169,7 @@ class Produk extends Controller
     public function pakaian()
     {
         $data['judul'] = 'Daftar Pakaian';
-        $data['produk'] = $this->modelPenjual('Produk_model')->getAllProdukPembeli();
+        $data['produk'] = $this->modelPenjual('Produk_model')->getProdukByKategori("K0005");
         $this->viewPembeli('templates/header', $data);
         $this->viewPembeli('produk/pakaian', $data);
         $this->viewPembeli('templates/footer');
@@ -178,7 +178,7 @@ class Produk extends Controller
     public function atk()
     {
         $data['judul'] = 'Daftar ATK';
-        $data['produk'] = $this->modelPenjual('Produk_model')->getAllProdukPembeli();
+        $data['produk'] = $this->modelPenjual('Produk_model')->getProdukByKategori("K0006");
         $this->viewPembeli('templates/header', $data);
         $this->viewPembeli('produk/atk', $data);
         $this->viewPembeli('templates/footer');
@@ -187,9 +187,44 @@ class Produk extends Controller
     public function perabotan()
     {
         $data['judul'] = 'Daftar Perabotan';
-        $data['produk'] = $this->modelPenjual('Produk_model')->getAllProdukPembeli();
+        $data['produk'] = $this->modelPenjual('Produk_model')->getProdukByKategori("K0007");
         $this->viewPembeli('templates/header', $data);
         $this->viewPembeli('produk/perabotan', $data);
+        $this->viewPembeli('templates/footer');
+    }
+
+    public function cariHarga()
+    {
+        $data['judul'] = 'Daftar Produk';
+        $data['produk'] = $this->modelPenjual('Produk_model')->getProdukByHarga($_POST['minimum'], $_POST['maksimum'], $_POST['hal']);
+        // var_dump($_POST);
+        $this->viewPembeli('templates/header', $data);
+        switch ($_POST['hal']) {
+            case 'K0001':
+                $this->viewPembeli('produk/bahan_makanan', $data);
+                break;
+            case 'K0002':
+                $this->viewPembeli('produk/snack', $data);
+                break;
+            case 'K0003':
+                $this->viewPembeli('produk/minuman', $data);
+                break;
+            case 'K0004':
+                $this->viewPembeli('produk/obat', $data);
+                break;
+            case 'K0005':
+                $this->viewPembeli('produk/pakaian', $data);
+                break;
+            case 'K0006':
+                $this->viewPembeli('produk/atk', $data);
+                break;
+            case 'K0007':
+                $this->viewPembeli('produk/perabotan', $data);
+                break;
+            default:
+                $this->viewPembeli('produk/index', $data);
+                break;
+        }
         $this->viewPembeli('templates/footer');
     }
 }

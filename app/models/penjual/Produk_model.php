@@ -111,4 +111,44 @@ class Produk_model
         $this->db->bind('id', $_SESSION['user']['user'][0]['akun_id']);
         return $this->db->resultSet();
     }
+
+    public function getProdukByKategori($id)
+    {
+        $query = "SELECT * FROM " . $this->table . " WHERE KategoriID=:id";
+        $this->db->query($query);
+        $this->db->bind('id', $id);
+
+        return $this->db->resultSet();
+    }
+
+    public function getProdukByHarga($min, $max, $kategori)
+    {
+
+        if ($min == '' && $max == '') {
+            $min = "0";
+            $max = "999999999";
+        } elseif ($min == '') {
+            $min = "0";
+        } elseif ($max == '') {
+            $max = "999999999";
+        }
+
+
+        if ($kategori == "all") {
+            $query = "SELECT * FROM " . $this->table . " WHERE Harga_Jual BETWEEN :min AND :max";
+            $this->db->query($query);
+            $this->db->bind('min', $min);
+            $this->db->bind('max', $max);
+        } else {
+            $query = "SELECT * FROM " . $this->table . " WHERE KategoriID=:kategori AND Harga_Jual BETWEEN :min AND :max";
+            $this->db->query($query);
+            $this->db->bind('min', $min);
+            $this->db->bind('max', $max);
+            $this->db->bind('kategori', $kategori);
+        }
+
+
+
+        return $this->db->resultSet();
+    }
 }

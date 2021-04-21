@@ -100,28 +100,31 @@
             <div class="left-sidebar">
                 <h2>Harga</h2>
                 <div class="panel-group category-products" id="accordian">
-                    <div class="row">
-                        <div class="col-10">
-                            <div class="input-group mb-3 ms-4">
-                                <span class="input-group-text" id="basic-addon1">Rp</span>
-                                <input type="text" class="form-control" placeholder="Harga Minimum" aria-label="Username" aria-describedby="basic-addon1">
+                    <form action="<?= BASEURL; ?>/produk/cariHarga" method="POST">
+                        <div class="row">
+                            <div class="col-10">
+                                <div class="input-group mb-3 ms-4">
+                                    <span class="input-group-text" id="basic-addon1">Rp</span>
+                                    <input type="text" class="form-control" placeholder="Harga Minimum" aria-label="Username" aria-describedby="basic-addon1" name="minimum">
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="col-10">
-                            <div class="input-group mb-3 ms-4">
-                                <span class="input-group-text" id="basic-addon1">Rp</span>
-                                <input type="text" class="form-control" placeholder="Harga Maksimum" aria-label="Username" aria-describedby="basic-addon1">
+                        <div class="row">
+                            <div class="col-10">
+                                <div class="input-group mb-3 ms-4">
+                                    <span class="input-group-text" id="basic-addon1">Rp</span>
+                                    <input type="text" class="form-control" placeholder="Harga Maksimum" aria-label="Username" aria-describedby="basic-addon1" name="maksimum">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col align-self-end">
-                            <button class="btn btn-outline-success cek btn-sm" type="submit" id="tombol-cari">Terapkan</button>
+                        <input type="text" hidden value="K0005" name="hal">
+                        <div class="row mt-3">
+                            <div class="col align-self-end">
+                                <button class="btn btn-outline-success cek btn-sm" type="submit" id="tombol-cari">Terapkan</button>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -135,7 +138,6 @@
                                 <div class="single-products">
                                     <div class="productinfo text-center">
                                         <img src="<?= BASEURL; ?>/img/tumbnail.png" alt="" />
-                                        <p class="mt-4 text-start ms-5 ps-5 text-decoration-line-through text-muted">Rp <?= $prd['Harga_Jual'] * 2; ?></p>
                                         <h2>Rp <?= $prd['Harga_Jual']; ?></h2>
                                         <p><?= $prd['Nama_Produk']; ?></p>
                                         <a href="<?= BASEURL; ?>/produk/detail/<?= $prd['ProdukID']; ?>" class="btn btn-default add-to-cart"><i class="bi bi-cart-fill"></i>Add to cart</a>
