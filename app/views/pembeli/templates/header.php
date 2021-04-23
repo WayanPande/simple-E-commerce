@@ -10,6 +10,7 @@
 
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="<?= BASEURL; ?>/css/styles.css">
 </head>
 
@@ -30,7 +31,7 @@
                 <?= $_SESSION['user']['user'][0]['akun_id']; ?>
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                <li><button class="dropdown-item" type="button">Profile</button></li>
+                <li><a href="<?= BASEURL; ?>/about/indexPembeli" class="dropdown-item" type="button">Profile</a></li>
                 <li><button class="dropdown-item" type="button">Another action</button></li>
                 <li><button class="dropdown-item" type="button">Something else here</button></li>
             </ul>

@@ -13,6 +13,18 @@ class About extends Controller
         $this->viewPenjual('about/index', $data);
         $this->viewPenjual('templates/footer');
     }
+
+    public function indexPembeli()
+    {
+        $data['judul'] = 'About';
+        $data['akun'] = $this->modelPenjual('User_model')->detailUser();
+        // var_dump($data['akun']);
+
+        $this->viewPembeli('templates/header', $data);
+        $this->viewPembeli('about/index', $data);
+        $this->viewPembeli('templates/footer');
+    }
+
     public function page()
     {
         $data['judul'] = 'Page';

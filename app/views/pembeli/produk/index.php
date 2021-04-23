@@ -133,7 +133,7 @@
                 <h2 class="title text-center">Features Items</h2>
                 <div class="row">
                     <?php foreach ($data['produk'] as $prd) : ?>
-                        <div class="col-sm-3 align-self-center">
+                        <div class="col-sm-3 align-self-center" data-aos="zoom-in">
                             <div class="product-image-wrapper">
                                 <div class="single-products">
                                     <div class="productinfo text-center">
@@ -171,6 +171,7 @@
         </div>
     </div>
 </div>
+
 
 <style>
     .cek {

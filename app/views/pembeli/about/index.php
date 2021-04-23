@@ -1,6 +1,10 @@
 <br>
 <div class="container">
-    <h1 class="mt-4 mb-4">About Me</h1>
+    <div class="row">
+        <div class="col-lg-4">
+            <h1 class="mt-4 mb-4 about">About Me</h1>
+        </div>
+    </div>
     <div class="row justify-content-start">
         <div class="col-6">
             <?php Flasher::flash(); ?>
