@@ -5,7 +5,15 @@
             <h1>Order Detail</h1>
         </div>
     </div>
-    <div class="row mt-4">
+    <div class="row justify-content-end">
+        <div class="col-4">
+            <form class="d-flex" method="post" action="<?= BASEURL; ?>/analytics/cari">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="keyword" name="keyword">
+                <button class="btn btn-outline-success" type="submit" id="tombol-cari">Search</button>
+            </form>
+        </div>
+    </div>
+    <div class="row mt-4 justify-content-center">
         <div class="col-lg-6">
             <div class="table-responsive">
                 <table class="table table-bordered table-hover table-striped tablesorter" id="container">
@@ -16,7 +24,7 @@
                             <th scope="col">Order Time</th>
                             <th scope="col">ID Produk</th>
                             <th scope="col">Nama Produk</th>
-                            <th scope="col">Amount (IDR)</th>
+                            <th scope="col">Jumlah</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -27,7 +35,7 @@
                                 <td><?= $ord['jam']; ?></td>
                                 <td><?= $ord['ProdukID']; ?></td>
                                 <td><?= $ord['Nama_Produk']; ?></td>
-                                <td><?= $ord['TotalHarga']; ?></td>
+                                <td><?= $ord['kuantitas']; ?></td>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

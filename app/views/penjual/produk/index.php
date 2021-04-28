@@ -28,8 +28,25 @@
     </div>
 
     <div class="row justify-content-start mt-5">
-        <div class="col">
-            <table class="table table-bordered border-dark mp-t5" id="container">
+
+
+        <?php foreach ($data['produk'] as $prd) : ?>
+            <div class="col-sm-3 align-self-center" data-aos="zoom-in">
+                <div class="product-image-wrapper">
+                    <div class="single-products">
+                        <div class="productinfo text-center">
+                            <img src="<?= BASEURL; ?>/img/tumbnail.png" alt="" />
+                            <h2>Rp <?= $prd['Harga_Jual']; ?></h2>
+                            <p><?= $prd['Nama_Produk']; ?></p>
+                            <a href="<?= BASEURL; ?>/produk/detail/<?= $prd['ProdukID']; ?>" class="btn btn-default add-to-cart"><i class="bi bi-cart-fill"></i>Edit</a>
+                            <a href="<?= BASEURL; ?>/produk/hapus/<?= $prd['ProdukID']; ?>" class="btn btn-default add-to-cart"><i class="bi bi-cart-fill"></i>Hapus</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach; ?>
+
+        <!-- <table class="table table-bordered border-dark mp-t5" id="container">
                 <thead>
                     <tr>
                         <th scope="col">ID Produk</th>
@@ -56,8 +73,8 @@
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
-            </table>
-        </div>
+            </table> -->
+
     </div>
 </div>
 
@@ -79,3 +96,66 @@
         </div>
     </div>
 </div>
+
+<style>
+    .product-image-wrapper {
+        border: 2px solid #F7F7F5;
+        overflow: hidden;
+        margin-bottom: 30px;
+        border-radius: 8px;
+    }
+
+    .productinfo h2 {
+        color: #0275d8;
+        font-family: 'Roboto', sans-serif;
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+
+    .productinfo p {
+        font-family: 'Roboto', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        color: #696763;
+    }
+
+    .productinfo img {
+        width: 100%;
+    }
+
+    .productinfo {
+        position: relative;
+    }
+
+
+    .add-to-cart {
+        background: #F5F5ED;
+        border: 0 none;
+        border-radius: 0;
+        color: #696763;
+        font-family: 'Roboto', sans-serif;
+        font-size: 15px;
+        margin-bottom: 25px;
+    }
+
+    .add-to-cart:hover {
+        background: #0275d8;
+        border: 0 none;
+        border-radius: 0;
+        color: #FFFFFF;
+    }
+
+    .add-to {
+        margin-bottom: 10px;
+    }
+
+    .add-to-cart i {
+        margin-right: 5px;
+    }
+
+    .add-to-cart:hover {
+        background: #0275d8;
+        color: #FFFFFF;
+    }
+</style>

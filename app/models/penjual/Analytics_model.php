@@ -13,7 +13,7 @@ class Analytics_model
 
     public function getAllOrder()
     {
-        $query = "SELECT id_transaksi, DATE(Tgl_Penjualan) AS tanggal, TIME(Tgl_Penjualan) AS jam, TotalHarga, produk.ProdukID, produk.Nama_Produk 
+        $query = "SELECT id_transaksi, DATE(Tgl_Penjualan) AS tanggal, TIME(Tgl_Penjualan) AS jam, TotalHarga, produk.ProdukID, produk.Nama_Produk, kuantitas 
         FROM transaksi INNER JOIN produk 
         ON transaksi.ProdukID = produk.ProdukID 
         WHERE produk.PenjualID = :id
