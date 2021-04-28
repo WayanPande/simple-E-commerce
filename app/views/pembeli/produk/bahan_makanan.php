@@ -121,7 +121,7 @@
                         <input type="text" hidden value="K0001" name="hal">
                         <div class="row mt-3">
                             <div class="col align-self-end">
-                                <button class="btn btn-outline-success cek btn-sm" type="submit" id="tombol-cari">Terapkan</button>
+                                <button class="btn btn-outline-success cek btn-sm" type="submit" id="tombol-cari" name="harga">Terapkan</button>
                             </div>
                         </div>
                     </form>
@@ -133,7 +133,7 @@
                 <h2 class="title text-center">Features Items</h2>
                 <div class="row">
                     <?php foreach ($data['produk'] as $prd) : ?>
-                        <div class="col-sm-3 align-self-center">
+                        <div class="col-sm-3 align-self-center" data-aos="zoom-in">
                             <div class="product-image-wrapper">
                                 <div class="single-products">
                                     <div class="productinfo text-center">
@@ -146,6 +146,47 @@
                             </div>
                         </div>
                     <?php endforeach; ?>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <?php if ($data['jumlahHalaman'] > 1) :  ?>
+                            <ul class="pagination justify-content-center">
+                                <?php if ($data['halaman'] == 1) : ?>
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="<?= BASEURL; ?>/<?= $_GET['url']; ?>&halaman=<?= $data['halaman'] - 1; ?>" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                <?php else : ?>
+                                    <li class="page-item">
+                                        <a class="page-link" href="<?= BASEURL; ?>/<?= $_GET['url']; ?>&halaman=<?= $data['halaman'] - 1; ?>" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                <?php endif; ?>
+                                <?php for ($i = 1; $i <= $data['jumlahHalaman']; $i++) : ?>
+                                    <?php if ($i == $data['halaman']) : ?>
+                                        <li class="page-item active"><a class="page-link" href="<?= BASEURL; ?>/<?= $_GET['url']; ?>&halaman=<?= $i; ?>"><?= $i; ?></a></li>
+                                    <?php else : ?>
+                                        <li class="page-item"><a class="page-link" href="<?= BASEURL; ?>/<?= $_GET['url']; ?>&halaman=<?= $i; ?>"><?= $i; ?></a></li>
+                                    <?php endif; ?>
+                                <?php endfor; ?>
+                                <?php if ($data['halaman'] == $data['jumlahHalaman']) : ?>
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="<?= BASEURL; ?>/<?= $_GET['url']; ?>&halaman=<?= $data['halaman'] + 1; ?>" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                <?php else : ?>
+                                    <li class="page-item">
+                                        <a class="page-link" href="<?= BASEURL; ?>/<?= $_GET['url']; ?>&halaman=<?= $data['halaman'] + 1; ?>" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                <?php endif; ?>
+                            </ul>
+                        <?php endif; ?>
+                    </div>
                 </div>
             </div>
         </div>

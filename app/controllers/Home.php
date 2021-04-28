@@ -18,7 +18,7 @@ class Home extends Controller
         $data['judul'] = 'Home';
         // $data['nama'] = $this->model('User_model')->getUser();
         $_SESSION['keranjang'] = $this->modelPembeli('Keranjang_model')->totalBarang();
-        $data['produk'] = $this->modelPenjual('Produk_model')->getAllProdukPembeli();
+        $data['produk'] = $this->modelPenjual('Produk_model')->countAllProduk();
         // var_dump($data['produk']);
         $this->viewPembeli('templates/header', $data);
         $this->viewPembeli('home/index', $data);

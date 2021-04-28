@@ -6,7 +6,7 @@
         <div class="col-9">
             <form class="d-flex" method="post" action="<?= BASEURL; ?>/produk/cariPembeli">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="keyword" name="keyword">
-                <button class="btn btn-outline-success" type="submit" id="tombol-cari">Search</button>
+                <button class="btn btn-outline-success" type="submit" id="tombol-cari" name="cari">Search</button>
             </form>
         </div>
     </div>
@@ -121,7 +121,7 @@
                         <input type="text" hidden value="all" name="hal">
                         <div class="row mt-3">
                             <div class="col align-self-end">
-                                <button class="btn btn-outline-success cek btn-sm" type="submit" id="tombol-cari">Terapkan</button>
+                                <button class="btn btn-outline-success cek btn-sm" type="submit" id="tombol-cari" name="harga">Terapkan</button>
                             </div>
                         </div>
                     </form>
@@ -138,7 +138,6 @@
                                 <div class="single-products">
                                     <div class="productinfo text-center">
                                         <img src="<?= BASEURL; ?>/img/tumbnail.png" alt="" />
-                                        <p class="mt-4 text-start ms-5 ps-5 text-decoration-line-through text-muted">Rp <?= $prd['Harga_Jual'] * 2; ?></p>
                                         <h2>Rp <?= $prd['Harga_Jual']; ?></h2>
                                         <p><?= $prd['Nama_Produk']; ?></p>
                                         <a href="<?= BASEURL; ?>/produk/detail/<?= $prd['ProdukID']; ?>" class="btn btn-default add-to-cart"><i class="bi bi-cart-fill"></i>Add to cart</a>
@@ -147,6 +146,47 @@
                             </div>
                         </div>
                     <?php endforeach; ?>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <?php if ($data['jumlahHalaman'] > 1) :  ?>
+                            <ul class="pagination justify-content-center">
+                                <?php if ($data['halaman'] == 1) : ?>
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="<?= BASEURL; ?>/<?= $_GET['url']; ?>&halaman=<?= $data['halaman'] - 1; ?>" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                <?php else : ?>
+                                    <li class="page-item">
+                                        <a class="page-link" href="<?= BASEURL; ?>/<?= $_GET['url']; ?>&halaman=<?= $data['halaman'] - 1; ?>" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                <?php endif; ?>
+                                <?php for ($i = 1; $i <= $data['jumlahHalaman']; $i++) : ?>
+                                    <?php if ($i == $data['halaman']) : ?>
+                                        <li class="page-item active"><a class="page-link" href="<?= BASEURL; ?>/<?= $_GET['url']; ?>&halaman=<?= $i; ?>"><?= $i; ?></a></li>
+                                    <?php else : ?>
+                                        <li class="page-item"><a class="page-link" href="<?= BASEURL; ?>/<?= $_GET['url']; ?>&halaman=<?= $i; ?>"><?= $i; ?></a></li>
+                                    <?php endif; ?>
+                                <?php endfor; ?>
+                                <?php if ($data['halaman'] == $data['jumlahHalaman']) : ?>
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="<?= BASEURL; ?>/<?= $_GET['url']; ?>&halaman=<?= $data['halaman'] + 1; ?>" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                <?php else : ?>
+                                    <li class="page-item">
+                                        <a class="page-link" href="<?= BASEURL; ?>/<?= $_GET['url']; ?>&halaman=<?= $data['halaman'] + 1; ?>" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                <?php endif; ?>
+                            </ul>
+                        <?php endif; ?>
+                    </div>
                 </div>
             </div>
         </div>

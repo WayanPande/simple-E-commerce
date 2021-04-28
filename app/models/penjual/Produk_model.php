@@ -22,9 +22,20 @@ class Produk_model
         return $this->db->resultSet();
     }
 
-    public function getAllProdukPembeli()
+    public function countAllProduk()
     {
         $this->db->query('SELECT * FROM ' . $this->table);
+
+        return $this->db->resultSet();
+    }
+
+    public function getAllProdukPembeli($halamanAktif, $jumlahDataPerHalaman)
+    {
+        $awalData = ($jumlahDataPerHalaman * $halamanAktif) - $jumlahDataPerHalaman;
+        $query = "SELECT * FROM " . $this->table . " LIMIT :awal, :akhir";
+        $this->db->query($query);
+        $this->db->bind('awal', $awalData);
+        $this->db->bind('akhir', $jumlahDataPerHalaman);
 
         return $this->db->resultSet();
     }
@@ -86,7 +97,19 @@ class Produk_model
         return $this->db->rowCount();
     }
 
-    public function cariDataProduk($data)
+    public function cariDataProduk($data, $halamanAktif, $jumlahDataPerHalaman)
+    {
+        $awalData = ($jumlahDataPerHalaman * $halamanAktif) - $jumlahDataPerHalaman;
+
+        $query = "SELECT produk.ProdukID, produk.Nama_Produk, produk.Stok,kategori.Nama_Kategori, produk.Harga_Jual, produk.Harga_Beli FROM produk INNER JOIN kategori ON produk.KategoriID = kategori.KategoriID WHERE produk.ProdukID LIKE '%$data%' OR produk.Nama_Produk LIKE '%$data%' OR produk.Stok LIKE '%$data%' OR kategori.Nama_Kategori LIKE '%$data%' OR produk.Harga_Jual LIKE '%$data%' OR produk.Harga_Beli LIKE '%$data%' LIMIT :awal, :akhir";
+
+        $this->db->query($query);
+        $this->db->bind('awal', $awalData);
+        $this->db->bind('akhir', $jumlahDataPerHalaman);
+        return $this->db->resultSet();
+    }
+
+    public function countCariDataProduk($data)
     {
         $query = "SELECT produk.ProdukID, produk.Nama_Produk, produk.Stok,kategori.Nama_Kategori, produk.Harga_Jual, produk.Harga_Beli FROM produk INNER JOIN kategori ON produk.KategoriID = kategori.KategoriID WHERE produk.ProdukID LIKE '%$data%' OR produk.Nama_Produk LIKE '%$data%' OR produk.Stok LIKE '%$data%' OR kategori.Nama_Kategori LIKE '%$data%' OR produk.Harga_Jual LIKE '%$data%' OR produk.Harga_Beli LIKE '%$data%'";
 
@@ -112,7 +135,7 @@ class Produk_model
         return $this->db->resultSet();
     }
 
-    public function getProdukByKategori($id)
+    public function countProdukByKategori($id)
     {
         $query = "SELECT * FROM " . $this->table . " WHERE KategoriID=:id";
         $this->db->query($query);
@@ -121,7 +144,19 @@ class Produk_model
         return $this->db->resultSet();
     }
 
-    public function getProdukByHarga($min, $max, $kategori)
+    public function getProdukByKategori($id, $halamanAktif, $jumlahDataPerHalaman)
+    {
+        $awalData = ($jumlahDataPerHalaman * $halamanAktif) - $jumlahDataPerHalaman;
+        $query = "SELECT * FROM " . $this->table . " WHERE KategoriID=:id LIMIT :awal, :akhir";
+        $this->db->query($query);
+        $this->db->bind('id', $id);
+        $this->db->bind('awal', $awalData);
+        $this->db->bind('akhir', $jumlahDataPerHalaman);
+
+        return $this->db->resultSet();
+    }
+
+    public function countProdukByHarga($min, $max, $kategori)
     {
 
         if ($min == '' && $max == '') {
@@ -147,7 +182,39 @@ class Produk_model
             $this->db->bind('kategori', $kategori);
         }
 
+        return $this->db->resultSet();
+    }
 
+    public function getProdukByHarga($min, $max, $kategori, $halamanAktif, $jumlahDataPerHalaman)
+    {
+        $awalData = ($jumlahDataPerHalaman * $halamanAktif) - $jumlahDataPerHalaman;
+
+        if ($min == '' && $max == '') {
+            $min = "0";
+            $max = "999999999";
+        } elseif ($min == '') {
+            $min = "0";
+        } elseif ($max == '') {
+            $max = "999999999";
+        }
+
+
+        if ($kategori == "all") {
+            $query = "SELECT * FROM " . $this->table . " WHERE Harga_Jual BETWEEN :min AND :max LIMIT :awal, :akhir";
+            $this->db->query($query);
+            $this->db->bind('min', $min);
+            $this->db->bind('max', $max);
+            $this->db->bind('awal', $awalData);
+            $this->db->bind('akhir', $jumlahDataPerHalaman);
+        } else {
+            $query = "SELECT * FROM " . $this->table . " WHERE KategoriID=:kategori AND Harga_Jual BETWEEN :min AND :max LIMIT :awal, :akhir";
+            $this->db->query($query);
+            $this->db->bind('min', $min);
+            $this->db->bind('max', $max);
+            $this->db->bind('kategori', $kategori);
+            $this->db->bind('awal', $awalData);
+            $this->db->bind('akhir', $jumlahDataPerHalaman);
+        }
 
         return $this->db->resultSet();
     }
