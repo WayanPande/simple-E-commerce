@@ -119,7 +119,7 @@ class Produk extends Controller
 
             $_SESSION['keranjang'] = $this->modelPembeli('Keranjang_model')->totalBarang();
             Flasher::setFlash('Produk', 'berhasil', 'ditambahkan', 'success');
-            header('Location: ' . BASEURL . '/produk/indexPembeli');
+            header('Location: ' . BASEURL . '/produk/all');
             exit;
         } else {
             echo "

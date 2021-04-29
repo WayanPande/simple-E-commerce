@@ -12,4 +12,8 @@ class Analytics extends Controller
         $this->viewPenjual('analytics/index', $data);
         $this->viewPenjual('templates/footer');
     }
+
+    public function cari()
+    {
+    }
 }

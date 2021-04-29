@@ -10,11 +10,6 @@
             </form>
         </div>
     </div>
-    <div class="row justify-content-start mt-3">
-        <div class="col-6">
-            <?php Flasher::flash(); ?>
-        </div>
-    </div>
     <div class="row justify-content-start mt-5">
         <div class="col-sm-3">
             <div class="left-sidebar">

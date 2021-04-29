@@ -21,7 +21,7 @@ class Checkout extends Controller
             $this->modelPembeli('Checkout_model')->updateKuantitasBarang($keranjang);
             $this->modelPembeli('Checkout_model')->hapusSemuaDataKeranjang($keranjang[0]['akun_id']);
             $_SESSION['keranjang'] = $this->modelPembeli('Keranjang_model')->totalBarang();
-            header('Location: ' . BASEURL . '/checkout');
+            header('Location: ' . BASEURL . '/produk/all');
             exit;
         } else {
             echo "

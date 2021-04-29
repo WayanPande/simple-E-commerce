@@ -13,7 +13,39 @@
             </form>
         </div>
     </div>
-    <div class="row mt-4 justify-content-center">
+    <div class="row mt-5">
+        <div class="col-sm-3">
+            <div class="left-sidebar">
+                <h2>Tanggal</h2>
+                <div class="panel-group category-products" id="accordian">
+                    <form action="<?= BASEURL; ?>/produk/cariHarga" method="POST">
+                        <div class="row">
+                            <div class="col-10">
+                                <div class="input-group mb-3 ms-4">
+                                    <span class="input-group-text" id="basic-addon1">Rp</span>
+                                    <input type="text" class="form-control datepicker" placeholder="Harga Minimum" aria-label="Username" aria-describedby="basic-addon1" name="minimum">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-10">
+                                <div class="input-group mb-3 ms-4">
+                                    <span class="input-group-text" id="basic-addon1">Rp</span>
+                                    <input type="text" class="form-control" placeholder="Harga Maksimum" aria-label="Username" aria-describedby="basic-addon1" name="maksimum">
+                                </div>
+                            </div>
+                        </div>
+                        <input type="text" hidden value="all" name="hal">
+                        <div class="row mt-3">
+                            <div class="col align-self-end">
+                                <button class="btn btn-outline-success cek btn-sm" type="submit" id="tombol-cari" name="harga">Terapkan</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
         <div class="col-lg-6">
             <div class="table-responsive">
                 <table class="table table-bordered table-hover table-striped tablesorter" id="container">
@@ -46,3 +78,82 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(function() {
+        $(".datepicker").datepicker({
+            format: 'yyyy-mm-dd',
+            autoclose: true,
+            todayHighlight: true,
+        });
+    });
+</script>
+
+<style>
+    .category-products {
+        border: 2px solid #F7F7F0;
+        margin-bottom: 35px;
+        padding-bottom: 20px;
+        padding-top: 15px;
+        border-radius: 8px;
+    }
+
+    .category-products .panel {
+        background-color: #FFFFFF;
+        border: 0px;
+        border-radius: 0px;
+        box-shadow: none;
+        margin-bottom: 0px;
+    }
+
+    .category-products .panel-default .panel-heading {
+        background-color: #FFFFFF;
+        border: 0 none;
+        color: #FFFFFF;
+        padding: 5px 20px;
+    }
+
+    .category-products .panel-default .panel-heading .panel-title a {
+        color: #696763;
+        font-family: 'Roboto', sans-serif;
+        font-size: 14px;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+
+    .left-sidebar h2 {
+        color: #0275d8;
+        font-family: 'Roboto', sans-serif;
+        font-size: 18px;
+        font-weight: 700;
+        margin: 0 auto 30px;
+        text-align: center;
+        text-transform: uppercase;
+        position: relative;
+        z-index: 3;
+    }
+
+    .left-sidebar h2:after,
+    h2.title:after {
+        content: " ";
+        position: absolute;
+        border: 1px solid #f5f5f5;
+        bottom: 8px;
+        left: 0;
+        width: 100%;
+        height: 0;
+        z-index: -2;
+    }
+
+    .left-sidebar h2:before {
+        content: " ";
+        position: absolute;
+        background: #fff;
+        bottom: -6px;
+        width: 130px;
+        height: 30px;
+        z-index: -1;
+        left: 50%;
+        margin-left: -65px;
+    }
+</style>

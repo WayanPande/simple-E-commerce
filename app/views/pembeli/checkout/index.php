@@ -158,11 +158,3 @@
         </div>
     </main>
 </div>
-
-<script>
-    var barang = document.querySelector('.my-0')
-
-    function myFunction() {
-        barang.innerHTML = "tes"
-    }
-</script>
