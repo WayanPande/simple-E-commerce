@@ -53,7 +53,11 @@ if (isset($_POST["login"])) {
     <section id="contact">
         <div class="container">
             <div class="row text-center mt-5 pt-5">
-                <i class='bx bx-layer bx-tada-hover' style="font-size: 90px;"></i>
+                <div class="col">
+                    <img src="<?= BASEURL; ?>/img/s.png" class="" alt="..." style="width: 200px;">
+                </div>
+
+                <!-- <i class='bx bx-layer bx-tada-hover' style="font-size: 90px;"></i> -->
             </div>
             <div class="row text-center mb-3 mt-3">
                 <div class="col">

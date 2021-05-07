@@ -218,4 +218,19 @@ class Produk_model
 
         return $this->db->resultSet();
     }
+
+    public function updateDataBarang($data)
+    {
+
+        $query = "UPDATE " . $this->table . " SET Nama_Produk=:nama, Stok=:stok, Harga_Jual=:harga WHERE ProdukID=:id";
+        $this->db->query($query);
+        $this->db->bind('nama', $data['nama']);
+        $this->db->bind('stok', (int)$data['stok']);
+        $this->db->bind('harga', (int)$data['harga']);
+        $this->db->bind('id', $data['id']);
+
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
 }

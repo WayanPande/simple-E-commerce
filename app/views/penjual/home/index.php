@@ -9,13 +9,10 @@ if (!isset($data['jumlah_order'][0]['pendapatan'])) {
 <div class="container">
     <div class="col-lg-12 mt-5">
         <div class="jumbotron">
-            <h1 class="display-4">Selamat Datang <?= $_SESSION['user']['user'][0]['nama']; ?></h1>
-            <p class="lead">Hallo nama saya <?= $_SESSION['user']['user'][0]['nama']; ?></p>
-
-            <ol class="breadcrumb text-muted" style="background-color: #F7F6FB;">
-                <ion-icon name="speedometer" class="mt-1 ms-1 me-2"></ion-icon>
-                <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-            </ol>
+            <!-- <h1 class="display-4">Selamat Datang <?= $_SESSION['user']['user'][0]['nama']; ?></h1>
+            <p class="lead">Hallo nama saya <?= $_SESSION['user']['user'][0]['nama']; ?></p> -->
+            <h1 class="display-4">Penting hari ini</h1>
+            <p class="lead text-muted">Aktivitas yang perlu kamu pantau untuk jaga kepuasan pembeli</p>
         </div>
     </div>
 
@@ -30,7 +27,7 @@ if (!isset($data['jumlah_order'][0]['pendapatan'])) {
                     <div class="col-md-8">
                         <div class="card-body">
                             <p class="card-title text-end" style="font-size: 50px;"><?= $data['jumlah_order'][0]['jumlah']; ?></p>
-                            <p class="text-end">New Order!</p>
+                            <p class="text-end">Pesanan baru</p>
                         </div>
                     </div>
                 </div>
@@ -100,9 +97,29 @@ if (!isset($data['jumlah_order'][0]['pendapatan'])) {
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header bg-primary text-white">
-                    <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> Traffic Statistics: October 1, 2013 - October 31, 2013</h3>
+                    <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i>Statistik tokomu minggu ini</h3>
                 </div>
                 <div class="card-body">
+                    <div class="row">
+                        <div class="col-3">
+                            <div class="card" style="width: 18rem;">
+                                <div class="card-body">
+                                    <h6 class="card-subtitle mb-2 text-muted">Pendapatan bersih baru</h6>
+                                    <h5 class="card-title fw-bold" style="font-size: 30px;">Rp <?= $data['jumlah_order'][0]['pendapatan']; ?></h5>
+                                    <p class="card-text">-12% dari 7 hari terakhir</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="card" style="width: 18rem;">
+                                <div class="card-body">
+                                    <h6 class="card-subtitle mb-2 text-muted">Produk dilihat</h6>
+                                    <h5 class="card-title fw-bold" style="font-size: 30px;"><?= rand(5, 50); ?></h5>
+                                    <p class="card-text">-7% dari 7 hari terakhir</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div id="morris-chart-area"></div>
                 </div>
             </div>
@@ -114,7 +131,7 @@ if (!isset($data['jumlah_order'][0]['pendapatan'])) {
             <div class="card">
                 <div class="card-header bg-primary text-white pt-0 pb-0">
                     <p class="text-start mt-3" style="font-size: 20px;">
-                        <ion-icon name="pricetag-sharp"></ion-icon> Recent Transaction
+                        <ion-icon name="pricetag-sharp"></ion-icon> Transaksi terakhir
                     </p>
                 </div>
                 <div class="card-body">
@@ -141,10 +158,66 @@ if (!isset($data['jumlah_order'][0]['pendapatan'])) {
                         </table>
                     </div>
                     <div class="text-end">
-                        <a href="">View All Transactions <i class="bi bi-arrow-right-circle-fill"></i></ion-icon></a>
+                        <a href="<?= BASEURL; ?>/analytics">View All Transactions <i class="bi bi-arrow-right-circle-fill"></i></ion-icon></a>
                     </div>
                 </div>
             </div>
         </div>
     </div><!-- /.row -->
 </div>
+
+<script>
+    /* globals Chart:false, feather:false */
+
+    (function() {
+        'use strict'
+
+        feather.replace()
+
+        // Graphs
+        var ctx = document.getElementById('myChart')
+        // eslint-disable-next-line no-unused-vars
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: [
+                    'Sunday',
+                    'Monday',
+                    'Tuesday',
+                    'Wednesday',
+                    'Thursday',
+                    'Friday',
+                    'Saturday'
+                ],
+                datasets: [{
+                    data: [
+                        15339,
+                        21345,
+                        18483,
+                        24003,
+                        23489,
+                        24092,
+                        12034
+                    ],
+                    lineTension: 0,
+                    backgroundColor: 'transparent',
+                    borderColor: '#007bff',
+                    borderWidth: 4,
+                    pointBackgroundColor: '#007bff'
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: false
+                        }
+                    }]
+                },
+                legend: {
+                    display: false
+                }
+            }
+        })
+    })()
+</script>

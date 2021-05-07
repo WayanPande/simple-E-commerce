@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-7 col-lg-3 mt-5">
-            <img src="<?= BASEURL; ?>/img/i5.png" class="" alt="..." style="width: 200px;">
+            <img src="<?= BASEURL; ?>/img/s.png" class="" alt="..." style="width: 200px;">
         </div>
         <div class="col-md-5 col-lg-9 mt-5">
             <p class="fs-2 fw-bold lh-sm"><?= $data['produk'][0]['Nama_Produk']; ?></p>

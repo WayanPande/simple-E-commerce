@@ -22,4 +22,11 @@ class Analytics_model
         $this->db->bind('id', $_SESSION['user']['user'][0]['akun_id']);
         return $this->db->resultSet();
     }
+
+    public function getRataRata()
+    {
+        $query = "SELECT ProdukID, AVG(Kuantitas) AS rata_rata FROM transaksi GROUP BY ProdukID";
+        $this->db->query($query);
+        return $this->db->resultSet();
+    }
 }

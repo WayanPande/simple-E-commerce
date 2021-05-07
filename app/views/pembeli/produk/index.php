@@ -132,8 +132,8 @@
                             <div class="product-image-wrapper">
                                 <div class="single-products">
                                     <div class="productinfo text-center">
-                                        <img src="<?= BASEURL; ?>/img/tumbnail.png" alt="" />
-                                        <h2>Rp <?= $prd['Harga_Jual']; ?></h2>
+                                        <img src="<?= BASEURL; ?>/img/s.png" alt="" />
+                                        <h2 class="mt-3">Rp <?= $prd['Harga_Jual']; ?></h2>
                                         <p><?= $prd['Nama_Produk']; ?></p>
                                         <a href="<?= BASEURL; ?>/produk/detail/<?= $prd['ProdukID']; ?>" class="btn btn-default add-to-cart"><i class="bi bi-cart-fill"></i>Add to cart</a>
                                     </div>

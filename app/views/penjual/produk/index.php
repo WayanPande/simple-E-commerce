@@ -8,8 +8,10 @@
         </div>
     </div>
     <div class="row justify-content-between mt-3">
-        <div class="col-4">
-            <a class="btn btn-primary" href="<?= BASEURL; ?>/produk/tambah" role="button">Tambah Data Produk</a>
+        <div class="col-3">
+            <div class="d-grid">
+                <a class="btn btn-outline-primary" href="<?= BASEURL; ?>/produk/tambah" role="button">Tambah Data Produk</a>
+            </div>
         </div>
         <div class="col-4">
             <form class="d-flex" method="post" action="<?= BASEURL; ?>/produk/cari">
@@ -18,14 +20,14 @@
             </form>
         </div>
     </div>
-    <div class="row justify-content-end mt-3">
+    <!-- <div class="row justify-content-end mt-3">
         <div class="col-3">
             <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Advance search
             </button>
         </div>
 
-    </div>
+    </div> -->
 
     <div class="row justify-content-start mt-5">
 
@@ -35,10 +37,10 @@
                 <div class="product-image-wrapper">
                     <div class="single-products">
                         <div class="productinfo text-center">
-                            <img src="<?= BASEURL; ?>/img/tumbnail.png" alt="" />
-                            <h2>Rp <?= $prd['Harga_Jual']; ?></h2>
+                            <img src="<?= BASEURL; ?>/img/s.png" alt="" />
+                            <h2 class="mt-3">Rp <?= $prd['Harga_Jual']; ?></h2>
                             <p><?= $prd['Nama_Produk']; ?></p>
-                            <a href="<?= BASEURL; ?>/produk/detail/<?= $prd['ProdukID']; ?>" class="btn btn-default add-to-cart"><i class="bi bi-cart-fill"></i>Edit</a>
+                            <a href="<?= BASEURL; ?>/produk/detailPenjual/<?= $prd['ProdukID']; ?>" class="btn btn-default add-to-cart"><i class="bi bi-cart-fill"></i>Edit</a>
                             <a href="<?= BASEURL; ?>/produk/hapus/<?= $prd['ProdukID']; ?>" class="btn btn-default add-to-cart"><i class="bi bi-cart-fill"></i>Hapus</a>
                         </div>
                     </div>

@@ -38,11 +38,23 @@
                         </div>
                         <input type="text" hidden value="all" name="hal">
                         <div class="row mt-3">
-                            <div class="col align-self-end">
+                            <div class="col align-self-center">
                                 <button class="btn btn-outline-success cek btn-sm" type="submit" id="tombol-cari" name="harga">Terapkan</button>
                             </div>
                         </div>
                     </form>
+                </div>
+            </div>
+            <div class="left-sidebar">
+                <h2>Rata - Rata</h2>
+                <div class="panel-group category-products" id="accordian">
+                    <div class="row">
+                        <div class="col-11 ms-3">
+                            <div class="d-grid">
+                                <a class="btn btn-outline-primary" href="<?= BASEURL; ?>/analytics/ratarata" role="button">Detail</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -79,17 +91,11 @@
     </div>
 </div>
 
-<script>
-    $(function() {
-        $(".datepicker").datepicker({
-            format: 'yyyy-mm-dd',
-            autoclose: true,
-            todayHighlight: true,
-        });
-    });
-</script>
-
 <style>
+    .cek {
+        margin-left: 210px;
+    }
+
     .category-products {
         border: 2px solid #F7F7F0;
         margin-bottom: 35px;

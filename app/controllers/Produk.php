@@ -154,6 +154,15 @@ class Produk extends Controller
         $this->viewPembeli('templates/footer');
     }
 
+    public function detailPenjual($id)
+    {
+        $data['judul'] = 'Detail Produk';
+        $data['produk'] = $this->modelPembeli('Keranjang_model')->cariDataProduk($id);
+        $this->viewPenjual('templates/header', $data);
+        $this->viewPenjual('produk/detail', $data);
+        $this->viewPenjual('templates/footer');
+    }
+
     public function bahan_makanan()
     {
         $data['judul'] = 'Daftar Bahan Makanan';
@@ -320,5 +329,14 @@ class Produk extends Controller
                 break;
         }
         $this->viewPembeli('templates/footer');
+    }
+
+    public function ubahDataBarang()
+    {
+        if ($this->modelPenjual('Produk_model')->updateDataBarang($_POST)) {
+            Flasher::setFlash('Produk', 'berhasil', 'diubah', 'success');
+            header('Location: ' . BASEURL . '/produk');
+            exit;
+        }
     }
 }
