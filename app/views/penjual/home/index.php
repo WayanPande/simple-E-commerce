@@ -158,9 +158,99 @@ if (!isset($data['jumlah_order'][0]['pendapatan'])) {
                         </table>
                     </div>
                     <div class="text-end">
-                        <a href="<?= BASEURL; ?>/analytics">View All Transactions <i class="bi bi-arrow-right-circle-fill"></i></ion-icon></a>
+                        <a href="<?= BASEURL; ?>/analytics">Lihat Selengkapnya <i class="bi bi-arrow-right-circle-fill"></i></ion-icon></a>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-header bg-primary text-white pt-0 pb-0 mb-3">
+                    <p class="text-start mt-3" style="font-size: 20px;">
+                        <ion-icon name="ribbon"></ion-icon> Produk terlaris di tokomu
+                    </p>
+                </div>
+                <?php for ($x = 0; $x < 3; $x++) : ?>
+                    <?php if ($x == 2) : ?>
+                        <div class="card-body mb-3">
+                            <div class="row mb-2">
+                                <div class=" col-3 mt-4">
+                                    <img src="<?= BASEURL; ?>/img/s.png" class="card-img-top" alt="...">
+                                </div>
+                                <div class="col-5">
+                                    <div class="card" style="width: 18rem;">
+                                        <div class="card-body">
+                                            <p class="card-text fw-bold fs-4"><?= $data['terlaris'][$x]['Nama_Produk']; ?></p>
+                                            <p class="card-text text-muted">Stok Terjual : <?= $data['terlaris'][$x]['kuantitas']; ?> barang</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php else : ?>
+                        <div class="card-body mt-1">
+                            <div class="row">
+                                <div class="col-3 mt-4">
+                                    <img src="<?= BASEURL; ?>/img/s.png" class="card-img-top" alt="...">
+                                </div>
+                                <div class="col-5">
+                                    <div class="card" style="width: 18rem;">
+                                        <div class="card-body">
+                                            <p class="card-text fw-bold fs-4"><?= $data['terlaris'][$x]['Nama_Produk']; ?></p>
+                                            <p class="card-text text-muted">Stok Terjual : <?= $data['terlaris'][$x]['kuantitas']; ?> barang</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr style="width:90%;text-align:right;margin-left:20px" class="mt-0 mb-0">
+                    <?php endif; ?>
+                <?php endfor; ?>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-header bg-primary text-white pt-0 pb-0 mb-3">
+                    <p class="text-start mt-3" style="font-size: 20px;">
+                        <ion-icon name="alert-circle"></ion-icon> Tambahkan stok produkmu
+                    </p>
+                </div>
+                <?php for ($x = 0; $x < 3; $x++) : ?>
+                    <?php if ($x == 2) : ?>
+                        <div class="card-body mb-3">
+                            <div class="row mb-2">
+                                <div class=" col-3 mt-4">
+                                    <img src="<?= BASEURL; ?>/img/s.png" class="card-img-top" alt="...">
+                                </div>
+                                <div class="col-5">
+                                    <div class="card" style="width: 18rem;">
+                                        <div class="card-body">
+                                            <p class="card-text fw-bold fs-4"><?= $data['stok'][$x]['Nama_Produk']; ?></p>
+                                            <p class="card-text text-muted">Sisa Stok : <?= $data['stok'][$x]['kuantitas']; ?> barang</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php else : ?>
+                        <div class="card-body mt-1">
+                            <div class="row">
+                                <div class="col-3 mt-4">
+                                    <img src="<?= BASEURL; ?>/img/s.png" class="card-img-top" alt="...">
+                                </div>
+                                <div class="col-5">
+                                    <div class="card" style="width: 18rem;">
+                                        <div class="card-body">
+                                            <p class="card-text fw-bold fs-4"><?= $data['stok'][$x]['Nama_Produk']; ?></p>
+                                            <p class="card-text text-muted">Sisa Stok : <?= $data['stok'][$x]['kuantitas']; ?> barang</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr style="width:90%;text-align:right;margin-left:20px" class="mt-0 mb-0">
+                    <?php endif; ?>
+                <?php endfor; ?>
             </div>
         </div>
     </div><!-- /.row -->

@@ -18,12 +18,12 @@
             <div class="left-sidebar">
                 <h2>Tanggal</h2>
                 <div class="panel-group category-products" id="accordian">
-                    <form action="<?= BASEURL; ?>/produk/cariHarga" method="POST">
+                    <form action="<?= BASEURL; ?>/analytics/cariTanggal" method="POST">
                         <div class="row">
                             <div class="col-10">
                                 <div class="input-group mb-3 ms-4">
-                                    <span class="input-group-text" id="basic-addon1">Rp</span>
-                                    <input type="text" class="form-control datepicker" placeholder="Harga Minimum" aria-label="Username" aria-describedby="basic-addon1" name="minimum">
+                                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-calendar-date"></i></span>
+                                    <input type="text" class="form-control datepicker" placeholder="Tanggal Minimum" aria-label="Username" aria-describedby="basic-addon1" name="minimum">
                                 </div>
                             </div>
                         </div>
@@ -31,13 +31,18 @@
                         <div class="row">
                             <div class="col-10">
                                 <div class="input-group mb-3 ms-4">
-                                    <span class="input-group-text" id="basic-addon1">Rp</span>
-                                    <input type="text" class="form-control" placeholder="Harga Maksimum" aria-label="Username" aria-describedby="basic-addon1" name="maksimum">
+                                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-calendar-date"></i></span>
+                                    <input type="text" class="form-control" placeholder="Tanggal Maksimum" aria-label="Username" aria-describedby="basic-addon1" name="maksimum">
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col ms-4">
+                                <p class="text-muted">format: yy-mm-dd</p>
+                            </div>
+                        </div>
                         <input type="text" hidden value="all" name="hal">
-                        <div class="row mt-3">
+                        <div class="row">
                             <div class="col align-self-center">
                                 <button class="btn btn-outline-success cek btn-sm" type="submit" id="tombol-cari" name="harga">Terapkan</button>
                             </div>
@@ -49,12 +54,43 @@
                 <h2>Rata - Rata</h2>
                 <div class="panel-group category-products" id="accordian">
                     <div class="row">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-hover table-striped tablesorter">
+                                            <thead>
+                                                <tr>
+                                                    <th>#<i class="fa fa-sort"></i></th>
+                                                    <th>Nama Barang<i class="fa fa-sort"></i></th>
+                                                    <th>Terjual<i class="fa fa-sort"></i></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php foreach ($data['ratarata'] as $ord) : ?>
+                                                    <tr class="text-center">
+                                                        <td>1</td>
+                                                        <td><?= $ord['ProdukID']; ?></td>
+                                                        <td><?= $ord['rata_rata']; ?></td>
+                                                    </tr>
+                                                <?php endforeach; ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="text-end">
+                                        <a href="<?= BASEURL; ?>/analytics/ratarata">Lihat Selengkapnya <i class="bi bi-arrow-right-circle-fill"></i></ion-icon></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- /.row -->
+                    <!-- <div class="row">
                         <div class="col-11 ms-3">
                             <div class="d-grid">
                                 <a class="btn btn-outline-primary" href="<?= BASEURL; ?>/analytics/ratarata" role="button">Detail</a>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

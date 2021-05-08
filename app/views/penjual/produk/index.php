@@ -30,8 +30,6 @@
     </div> -->
 
     <div class="row justify-content-start mt-5">
-
-
         <?php foreach ($data['produk'] as $prd) : ?>
             <div class="col-sm-3 align-self-center" data-aos="zoom-in">
                 <div class="product-image-wrapper">
@@ -47,36 +45,6 @@
                 </div>
             </div>
         <?php endforeach; ?>
-
-        <!-- <table class="table table-bordered border-dark mp-t5" id="container">
-                <thead>
-                    <tr>
-                        <th scope="col">ID Produk</th>
-                        <th scope="col">Nama Produk</th>
-                        <th scope="col">Stok</th>
-                        <th scope="col">Kategori</th>
-                        <th scope="col">Harga Jual</th>
-                        <th scope="col">Harga Beli</th>
-                        <th scope="col">Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($data['produk'] as $prd) : ?>
-                        <tr>
-                            <th scope="row"><?= $prd['ProdukID']; ?></th>
-                            <td><?= $prd['Nama_Produk']; ?></td>
-                            <td><?= $prd['Stok']; ?></td>
-                            <td><?= $prd['Nama_Kategori']; ?></td>
-                            <td><?= $prd['Harga_Jual']; ?></td>
-                            <td><?= $prd['Harga_Beli']; ?></td>
-                            <td>
-                                <a href="<?= BASEURL; ?>/produk/hapus/<?= $prd['ProdukID']; ?>" onclick="return confirm('yakin?');"><span class="badge bg-secondary">Hapus</span></a>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table> -->
-
     </div>
 </div>
 

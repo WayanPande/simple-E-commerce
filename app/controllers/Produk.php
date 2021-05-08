@@ -83,7 +83,11 @@ class Produk extends Controller
     {
         // var_dump($_POST);
         $data['judul'] = 'Daftar Produk';
-        $data['produk'] = $this->modelPenjual('Produk_model')->cariDataProduk($_POST['keyword']);
+        if ($_POST['keyword'] != '') {
+            $data['produk'] = $this->modelPenjual('Produk_model')->cariDataProdukPenjual($_POST['keyword'], $_SESSION['user']['user'][0]['akun_id']);
+        } else {
+            $data['produk'] = $this->modelPenjual('Produk_model')->getAllProduk();
+        }
         $this->viewPenjual('templates/header', $data);
         $this->viewPenjual('produk/index', $data);
         $this->viewPenjual('templates/footer');

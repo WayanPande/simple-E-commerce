@@ -233,4 +233,39 @@ class Produk_model
 
         return $this->db->rowCount();
     }
+
+    public function cariDataProdukPenjual($data, $id)
+    {
+
+        $query = "SELECT produk.ProdukID, produk.Nama_Produk, produk.Stok,kategori.Nama_Kategori, produk.Harga_Jual, produk.Harga_Beli FROM produk INNER JOIN kategori ON produk.KategoriID = kategori.KategoriID WHERE produk.ProdukID LIKE '%$data%' OR produk.Nama_Produk LIKE '%$data%' OR produk.Stok LIKE '%$data%' OR kategori.Nama_Kategori LIKE '%$data%' OR produk.Harga_Jual LIKE '%$data%' OR produk.Harga_Beli LIKE '%$data%' AND produk.PenjualID=:id";
+
+        $this->db->query($query);
+        $this->db->bind('id', $id);
+
+        return $this->db->resultSet();
+    }
+
+    public function produkTerlaris()
+    {
+        $query = "SELECT produk.Nama_Produk, kuantitas 
+        FROM transaksi INNER JOIN produk 
+        ON transaksi.ProdukID = produk.ProdukID 
+        WHERE produk.PenjualID = :id
+        ORDER BY kuantitas DESC LIMIT 3";
+        $this->db->query($query);
+        $this->db->bind('id', $_SESSION['user']['user'][0]['akun_id']);
+        return $this->db->resultSet();
+    }
+
+    public function stokProduk()
+    {
+        $query = "SELECT produk.Nama_Produk, kuantitas 
+        FROM transaksi INNER JOIN produk 
+        ON transaksi.ProdukID = produk.ProdukID 
+        WHERE produk.PenjualID = :id
+        ORDER BY produk.Stok DESC LIMIT 3";
+        $this->db->query($query);
+        $this->db->bind('id', $_SESSION['user']['user'][0]['akun_id']);
+        return $this->db->resultSet();
+    }
 }
