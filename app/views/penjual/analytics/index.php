@@ -67,9 +67,10 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                <?php $x = 1; ?>
                                                 <?php foreach ($data['ratarata'] as $ord) : ?>
                                                     <tr class="text-center">
-                                                        <td>1</td>
+                                                        <td><?= $x++; ?></td>
                                                         <td><?= $ord['ProdukID']; ?></td>
                                                         <td><?= $ord['rata_rata']; ?></td>
                                                     </tr>
@@ -94,7 +95,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg">
             <div class="table-responsive">
                 <table class="table table-bordered table-hover table-striped tablesorter" id="container">
                     <thead>

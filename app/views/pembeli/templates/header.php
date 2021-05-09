@@ -32,8 +32,7 @@
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
                 <li><a href="<?= BASEURL; ?>/about/indexPembeli" class="dropdown-item" type="button">Profile</a></li>
-                <li><button class="dropdown-item" type="button">Another action</button></li>
-                <li><button class="dropdown-item" type="button">Something else here</button></li>
+                <li><a href="<?= BASEURL; ?>/login" class="dropdown-item" type="button">Log Out</a></li>
             </ul>
         </div>
     </header>
@@ -53,18 +52,8 @@
                     </a>
 
                     <a href="<?= BASEURL; ?>/produk/all" class="nav__link">
-                        <i class='bx bx-bookmark nav__icon'></i>
+                        <i class="bi bi-bag-check nav__icon"></i>
                         <span class="nav__name">Produk</span>
-                    </a>
-
-                    <a href="#" class="nav__link">
-                        <i class='bx bx-folder nav__icon'></i>
-                        <span class="nav__name">Data</span>
-                    </a>
-
-                    <a href="#" class="nav__link">
-                        <i class='bx bx-bar-chart-alt-2 nav__icon'></i>
-                        <span class="nav__name">Analytics</span>
                     </a>
                 </div>
             </div>

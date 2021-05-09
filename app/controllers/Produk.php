@@ -3,7 +3,7 @@
 class Produk extends Controller
 {
 
-    private $jumlahDataPerHalaman = 5;
+    private $jumlahDataPerHalaman = 12;
 
     public function index()
     {

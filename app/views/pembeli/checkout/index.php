@@ -1,15 +1,13 @@
 <div class="container">
     <main>
         <div class="py-5 text-center">
-            <ion-icon name="accessibility"></ion-icon>
-            <h2>Checkout form</h2>
-            <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+            <h2>Form Checkout</h2>
         </div>
 
         <div class="row g-5">
             <div class="col-md-5 col-lg-4 order-md-last">
                 <h4 class="d-flex justify-content-between align-items-center mb-3">
-                    <span class="text-primary">Your cart</span>
+                    <span class="text-primary">Keranjang</span>
                     <span class="badge bg-primary rounded-pill"><?= $_SESSION['keranjang']['total']; ?></span>
                 </h4>
                 <ul class="list-group mb-3">
@@ -36,11 +34,11 @@
                 </form>
             </div>
             <div class="col-md-7 col-lg-8">
-                <h4 class="mb-3">Billing address</h4>
+                <h4 class="mb-3">Dikirim ke</h4>
                 <form class="needs-validation" novalidate method="post" action="<?= BASEURL; ?>/checkout/order">
                     <div class="row g-3">
                         <div class="col-12">
-                            <label for="firstName" class="form-label">Name</label>
+                            <label for="firstName" class="form-label">Nama</label>
                             <input type="text" class="form-control" id="firstName" placeholder="" value="<?= $_SESSION['user']['user'][0]['nama']; ?>" name="nama" required>
                             <div class="invalid-feedback">
                                 Valid name is required.
@@ -152,7 +150,7 @@
 
                     <hr class="my-4">
 
-                    <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
+                    <button class="w-100 btn btn-primary btn-lg" type="submit">Beli</button>
                 </form>
             </div>
         </div>

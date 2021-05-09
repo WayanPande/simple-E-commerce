@@ -9,6 +9,10 @@ class Home extends Controller
         $data['jumlah_order'] = $this->modelPenjual('Produk_model')->getJumlahOrder();
         $data['terlaris'] = $this->modelPenjual('Produk_model')->produkTerlaris();
         $data['stok'] = $this->modelPenjual('Produk_model')->stokProduk();
+        $data['pendapatan'] = $this->modelPenjual('Produk_model')->getPendapatanHariIni();
+        if ($data['pendapatan']['pendapatan'] == null) {
+            $data['pendapatan']['pendapatan'] = 0;
+        }
         $this->viewPenjual('templates/header', $data);
         $this->viewPenjual('home/index', $data);
         $this->viewPenjual('templates/footer');

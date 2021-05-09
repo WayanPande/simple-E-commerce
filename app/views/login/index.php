@@ -90,14 +90,6 @@ if (isset($_POST["login"])) {
                             <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" id="password" required>
                             <label for="floatingPassword">Password</label>
                         </div>
-                        <!-- <div class="mb-3">
-                            <label for="name" class="form-label">Username</label>
-                            <input type="text" class="form-control" aria-describedby="name" name="username" id="username" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Password</label>
-                            <input type="password" class="form-control" aria-describedby="email" name="password" id="password" required>
-                        </div> -->
                         <div class="row mt-5">
                             <div class="d-grid gap-2 col-12">
                                 <button type="submit" class="btn btn-primary btn-kirim" name="login">Sign in</button>
@@ -106,10 +98,21 @@ if (isset($_POST["login"])) {
 
                                 <p>Don't have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#registrasi" class="text-decoration-none">Sign up now</a>.</p>
                             </div>
-
                         </div>
-
                     </form>
+                    <div class="row">
+                        <div class="col text-center">
+                            <p>or sign up with:</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col text-center">
+                            <button class="btn btn-primary rounded-circle" type="submit"><i class="bi bi-facebook"></i></button>
+                            <button class="btn btn-primary rounded-circle ms-2" type="submit"><i class="bi bi-google"></i></button>
+                            <button class="btn btn-primary rounded-circle ms-2" type="submit"><i class="bi bi-twitter"></i></button>
+                            <button class="btn btn-primary rounded-circle ms-2" type="submit"><i class="bi bi-github"></i></button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

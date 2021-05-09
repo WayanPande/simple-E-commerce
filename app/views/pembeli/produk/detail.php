@@ -44,7 +44,7 @@
                 </div>
                 <div class="row mt-5">
                     <div class="col">
-                        <button type="submit" class="btn btn-primary">Tambah Keranjang</button>
+                        <button type="submit" class="btn btn-primary"><i class="bi bi-plus"></i> Keranjang</button>
                     </div>
                 </div>
             </form>

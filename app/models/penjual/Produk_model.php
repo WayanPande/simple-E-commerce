@@ -135,6 +135,14 @@ class Produk_model
         return $this->db->resultSet();
     }
 
+    public function getPendapatanHariIni()
+    {
+        $query = "CALL pendapatan_hari_ini(:id)";
+        $this->db->query($query);
+        $this->db->bind('id', $_SESSION['user']['user'][0]['akun_id']);
+        return $this->db->single();
+    }
+
     public function countProdukByKategori($id)
     {
         $query = "SELECT * FROM " . $this->table . " WHERE KategoriID=:id";

@@ -26,8 +26,7 @@
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
                 <li><a href="<?= BASEURL; ?>/about" class="dropdown-item" type="button">Profile</a></li>
-                <li><button class="dropdown-item" type="button">Another action</button></li>
-                <li><button class="dropdown-item" type="button">Something else here</button></li>
+                <li><a href="<?= BASEURL; ?>/login" class="dropdown-item" type="button">Log Out</a></li>
             </ul>
         </div>
     </header>
