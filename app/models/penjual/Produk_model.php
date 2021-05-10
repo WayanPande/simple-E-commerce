@@ -22,6 +22,13 @@ class Produk_model
         return $this->db->resultSet();
     }
 
+    public function countAllProdukHome()
+    {
+        $this->db->query('SELECT * FROM ' . $this->table . ' LIMIT 12');
+
+        return $this->db->resultSet();
+    }
+
     public function countAllProduk()
     {
         $this->db->query('SELECT * FROM ' . $this->table);
@@ -127,7 +134,7 @@ class Produk_model
 
     public function getJumlahOrder()
     {
-        $query = "SELECT COUNT(transaksi.ProdukID) AS jumlah,  SUM(transaksi.TotalHarga) AS pendapatan FROM transaksi
+        $query = "SELECT COUNT(transaksi.ProdukID) AS jumlah,  (SUM(transaksi.TotalHarga)) AS pendapatan FROM transaksi
         INNER JOIN produk ON transaksi.ProdukID = produk.ProdukID
         WHERE produk.PenjualID = :id ";
         $this->db->query($query);
@@ -267,11 +274,9 @@ class Produk_model
 
     public function stokProduk()
     {
-        $query = "SELECT produk.Nama_Produk, kuantitas 
-        FROM transaksi INNER JOIN produk 
-        ON transaksi.ProdukID = produk.ProdukID 
-        WHERE produk.PenjualID = :id
-        ORDER BY produk.Stok DESC LIMIT 3";
+        $query = "SELECT Nama_Produk, Stok 
+        FROM produk WHERE PenjualID = :id AND Stok < 11
+        ORDER BY Stok LIMIT 3";
         $this->db->query($query);
         $this->db->bind('id', $_SESSION['user']['user'][0]['akun_id']);
         return $this->db->resultSet();

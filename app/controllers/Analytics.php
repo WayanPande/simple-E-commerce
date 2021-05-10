@@ -40,6 +40,13 @@ class Analytics extends Controller
         $data['judul'] = 'Halaman Analytics';
 
         $data['order'] = $this->modelPenjual('Analytics_model')->cariDataProdukTgl($_POST, $_SESSION['user']['user'][0]['akun_id']);
+        $data['ratarata'] = $this->modelPenjual('Analytics_model')->getRataRata(0);
+        $index = 0;
+        foreach ($data['ratarata'] as $i) {
+            $temp = (float)$i['rata_rata'];
+            $data['ratarata'][$index]['rata_rata'] = round($temp);
+            $index++;
+        }
 
         $this->viewPenjual('templates/header', $data);
         $this->viewPenjual('analytics/index', $data);
@@ -51,6 +58,13 @@ class Analytics extends Controller
         $data['judul'] = 'Halaman Analytics';
 
         $data['order'] = $this->modelPenjual('Analytics_model')->cariDataProduk($_POST['keyword'], $_SESSION['user']['user'][0]['akun_id']);
+        $data['ratarata'] = $this->modelPenjual('Analytics_model')->getRataRata(0);
+        $index = 0;
+        foreach ($data['ratarata'] as $i) {
+            $temp = (float)$i['rata_rata'];
+            $data['ratarata'][$index]['rata_rata'] = round($temp);
+            $index++;
+        }
 
         $this->viewPenjual('templates/header', $data);
         $this->viewPenjual('analytics/index', $data);

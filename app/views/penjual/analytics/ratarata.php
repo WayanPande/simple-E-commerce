@@ -11,9 +11,10 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php $x = 1; ?>
                         <?php foreach ($data['ratarata'] as $ord) : ?>
                             <tr class="text-center">
-                                <td>1</td>
+                                <td><?= $x++; ?></td>
                                 <td><?= $ord['ProdukID']; ?></td>
                                 <td><?= $ord['rata_rata']; ?></td>
                             </tr>

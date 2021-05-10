@@ -101,8 +101,8 @@
                     <thead>
                         <tr class="text-center">
                             <th scope="col">Order #</th>
-                            <th scope="col">Order Date</th>
-                            <th scope="col">Order Time</th>
+                            <th scope="col">Tanggal Order</th>
+                            <th scope="col">Waktu Order</th>
                             <th scope="col">ID Produk</th>
                             <th scope="col">Nama Produk</th>
                             <th scope="col">Jumlah</th>
