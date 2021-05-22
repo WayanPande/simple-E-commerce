@@ -39,7 +39,7 @@
                             <h2 class="mt-3">Rp <?= $prd['Harga_Jual']; ?></h2>
                             <p><?= $prd['Nama_Produk']; ?></p>
                             <a href="<?= BASEURL; ?>/produk/detailPenjual/<?= $prd['ProdukID']; ?>" class="btn btn-default add-to-cart"><i class="bi bi-cart-fill"></i>Edit</a>
-                            <a href="<?= BASEURL; ?>/produk/hapus/<?= $prd['ProdukID']; ?>" class="btn btn-default add-to-cart"><i class="bi bi-cart-fill"></i>Hapus</a>
+                            <a href="<?= BASEURL; ?>/produk/hapus/<?= $prd['ProdukID']; ?>" class="btn btn-default add-to-cart"><i class="bi bi-trash-fill"></i>Hapus</a>
                         </div>
                     </div>
                 </div>

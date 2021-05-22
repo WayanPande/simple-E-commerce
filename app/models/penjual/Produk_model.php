@@ -126,7 +126,7 @@ class Produk_model
 
     public function getAllOrder()
     {
-        $query = "SELECT id_transaksi, DATE(Tgl_Penjualan) AS tanggal, TIME(Tgl_Penjualan) AS jam, TotalHarga FROM transaksi INNER JOIN produk ON transaksi.ProdukID = produk.ProdukID WHERE produk.PenjualID = :id ORDER BY tanggal DESC LIMIT 10";
+        $query = "SELECT id_transaksi, DATE(Tgl_Penjualan) AS tanggal, TIME(Tgl_Penjualan) AS jam, TotalHarga FROM transaksi INNER JOIN produk ON transaksi.ProdukID = produk.ProdukID WHERE produk.PenjualID = :id ORDER BY tanggal DESC LIMIT 6";
         $this->db->query($query);
         $this->db->bind('id', $_SESSION['user']['user'][0]['akun_id']);
         return $this->db->resultSet();
@@ -262,10 +262,11 @@ class Produk_model
 
     public function produkTerlaris()
     {
-        $query = "SELECT produk.Nama_Produk, kuantitas 
+        $query = "SELECT produk.Nama_Produk, SUM(kuantitas) AS kuantitas 
         FROM transaksi INNER JOIN produk 
         ON transaksi.ProdukID = produk.ProdukID 
-        WHERE produk.PenjualID = :id
+        WHERE produk.PenjualID = :id 
+        GROUP BY produk.Nama_Produk
         ORDER BY kuantitas DESC LIMIT 3";
         $this->db->query($query);
         $this->db->bind('id', $_SESSION['user']['user'][0]['akun_id']);
