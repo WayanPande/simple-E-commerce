@@ -147,7 +147,7 @@
                         <?php if ($data['jumlahHalaman'] > 1) :  ?>
                             <ul class="pagination justify-content-center">
                                 <?php if ($data['halaman'] == 1) : ?>
-                                    <li class="page-item disabled">
+                                    <li class="page-item disabled" hidden>
                                         <a class="page-link" href="<?= BASEURL; ?>/<?= $_GET['url']; ?>&halaman=<?= $data['halaman'] - 1; ?>" aria-label="Previous">
                                             <span aria-hidden="true">&laquo;</span>
                                         </a>
@@ -161,13 +161,13 @@
                                 <?php endif; ?>
                                 <?php for ($i = 1; $i <= $data['jumlahHalaman']; $i++) : ?>
                                     <?php if ($i == $data['halaman']) : ?>
-                                        <li class="page-item active"><a class="page-link" href="<?= BASEURL; ?>/<?= $_GET['url']; ?>&halaman=<?= $i; ?>"><?= $i; ?></a></li>
+                                        <li class="page-item active"><span class="page-link"><?= $i; ?></span></li>
                                     <?php else : ?>
                                         <li class="page-item"><a class="page-link" href="<?= BASEURL; ?>/<?= $_GET['url']; ?>&halaman=<?= $i; ?>"><?= $i; ?></a></li>
                                     <?php endif; ?>
                                 <?php endfor; ?>
                                 <?php if ($data['halaman'] == $data['jumlahHalaman']) : ?>
-                                    <li class="page-item disabled">
+                                    <li class="page-item disabled" hidden>
                                         <a class="page-link" href="<?= BASEURL; ?>/<?= $_GET['url']; ?>&halaman=<?= $data['halaman'] + 1; ?>" aria-label="Next">
                                             <span aria-hidden="true">&raquo;</span>
                                         </a>
