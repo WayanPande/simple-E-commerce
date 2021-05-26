@@ -99,6 +99,7 @@ class Produk extends Controller
         $data['judul'] = 'Daftar Produk';
         if (isset($_POST['cari'])) {
             $_SESSION['keyword'] = $_POST['keyword'];
+            $_SESSION['hal'] = $_POST['hal'];
         }
 
         if (isset($_GET['halaman'])) {
@@ -107,12 +108,37 @@ class Produk extends Controller
             $halamanAktif = 1;
         }
 
-        $jumlahData = count($this->modelPenjual('Produk_model')->countCariDataProduk($_SESSION['keyword']));
-        $data['produk'] = $this->modelPenjual('Produk_model')->cariDataProduk($_SESSION['keyword'], $halamanAktif, $this->jumlahDataPerHalaman);
+        $jumlahData = count($this->modelPenjual('Produk_model')->countCariDataProduk($_SESSION['keyword'], $_SESSION['hal']));
+        $data['produk'] = $this->modelPenjual('Produk_model')->cariDataProduk($_SESSION['keyword'], $halamanAktif, $this->jumlahDataPerHalaman, $_SESSION['hal']);
         $data['jumlahHalaman'] = ceil($jumlahData / $this->jumlahDataPerHalaman);
         $data['halaman'] = $halamanAktif;
         $this->viewPembeli('templates/header', $data);
-        $this->viewPembeli('produk/index', $data);
+        switch ($_SESSION['hal']) {
+            case 'K0001':
+                $this->viewPembeli('produk/bahan_makanan', $data);
+                break;
+            case 'K0002':
+                $this->viewPembeli('produk/snack', $data);
+                break;
+            case 'K0003':
+                $this->viewPembeli('produk/minuman', $data);
+                break;
+            case 'K0004':
+                $this->viewPembeli('produk/obat', $data);
+                break;
+            case 'K0005':
+                $this->viewPembeli('produk/pakaian', $data);
+                break;
+            case 'K0006':
+                $this->viewPembeli('produk/atk', $data);
+                break;
+            case 'K0007':
+                $this->viewPembeli('produk/perabotan', $data);
+                break;
+            default:
+                $this->viewPembeli('produk/index', $data);
+                break;
+        }
         $this->viewPembeli('templates/footer');
     }
 

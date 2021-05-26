@@ -1,13 +1,13 @@
 <br>
 
 <div class="container mt-3">
-    <h1>Daftar Produk</h1>
+    <h1 data-aos="fade-right">Daftar Produk</h1>
     <div class="row justify-content-start">
         <div class="col-6">
             <?php Flasher::flash(); ?>
         </div>
     </div>
-    <div class="row justify-content-between mt-3">
+    <div class="row justify-content-between mt-3" data-aos="zoom-out">
         <div class="col-3">
             <div class="d-grid">
                 <a class="btn btn-outline-primary" href="<?= BASEURL; ?>/produk/tambah" role="button">Tambah Data Produk</a>
@@ -39,7 +39,10 @@
                             <h2 class="mt-3">Rp <?= $prd['Harga_Jual']; ?></h2>
                             <p><?= $prd['Nama_Produk']; ?></p>
                             <a href="<?= BASEURL; ?>/produk/detailPenjual/<?= $prd['ProdukID']; ?>" class="btn btn-default add-to-cart"><i class="bi bi-cart-fill"></i>Edit</a>
-                            <a href="<?= BASEURL; ?>/produk/hapus/<?= $prd['ProdukID']; ?>" class="btn btn-default add-to-cart"><i class="bi bi-trash-fill"></i>Hapus</a>
+                            <button type="button" class="btn btn-default add-to-cart" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <i class="bi bi-trash-fill"></i>Hapus
+                            </button>
+                            <!-- <a href="<?= BASEURL; ?>/produk/hapus/<?= $prd['ProdukID']; ?>" class="btn btn-default add-to-cart"><i class="bi bi-trash-fill"></i>Hapus</a> -->
                         </div>
                     </div>
                 </div>
@@ -53,15 +56,15 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Hapus data</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                ...
+                Apakah anda yakin?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <a type="button" class="btn btn-primary" href="<?= BASEURL; ?>/produk/hapus/<?= $prd['ProdukID']; ?>">Hapus</a>
             </div>
         </div>
     </div>

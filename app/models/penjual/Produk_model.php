@@ -54,9 +54,6 @@ class Produk_model
         $query = "INSERT INTO produk
                     VALUES
                 (:produkid, :nama, :stok, :id_kategori, :hargaJual, :hargaBeli, :penjualid, CURRENT_TIMESTAMP)";
-        // $query = "INSERT INTO produk
-        //             VALUES
-        //         ('PR005', 'Teh', '23', 'K0003', '2000', '1000', 'USR0005')";
 
         $this->db->query($query);
         $this->db->bind('produkid', $produkid);
@@ -104,23 +101,42 @@ class Produk_model
         return $this->db->rowCount();
     }
 
-    public function cariDataProduk($data, $halamanAktif, $jumlahDataPerHalaman)
+    public function cariDataProduk($data, $halamanAktif, $jumlahDataPerHalaman, $kategori)
     {
         $awalData = ($jumlahDataPerHalaman * $halamanAktif) - $jumlahDataPerHalaman;
 
-        $query = "SELECT produk.ProdukID, produk.Nama_Produk, produk.Stok,kategori.Nama_Kategori, produk.Harga_Jual, produk.Harga_Beli FROM produk INNER JOIN kategori ON produk.KategoriID = kategori.KategoriID WHERE produk.ProdukID LIKE '%$data%' OR produk.Nama_Produk LIKE '%$data%' OR produk.Stok LIKE '%$data%' OR kategori.Nama_Kategori LIKE '%$data%' OR produk.Harga_Jual LIKE '%$data%' OR produk.Harga_Beli LIKE '%$data%' LIMIT :awal, :akhir";
+        if ($kategori == "all") {
+            $query = "SELECT produk.ProdukID, produk.Nama_Produk, produk.Stok,kategori.Nama_Kategori, produk.Harga_Jual, produk.Harga_Beli FROM produk INNER JOIN kategori ON produk.KategoriID = kategori.KategoriID WHERE produk.ProdukID LIKE '%$data%' OR produk.Nama_Produk LIKE '%$data%' OR produk.Stok LIKE '%$data%' OR kategori.Nama_Kategori LIKE '%$data%' OR produk.Harga_Jual LIKE '%$data%' OR produk.Harga_Beli LIKE '%$data%' LIMIT :awal, :akhir";
 
-        $this->db->query($query);
+            $this->db->query($query);
+        } else {
+            $query = "SELECT produk.ProdukID, produk.Nama_Produk, produk.Stok,kategori.Nama_Kategori, produk.Harga_Jual, produk.Harga_Beli FROM produk INNER JOIN kategori ON produk.KategoriID = kategori.KategoriID WHERE (produk.ProdukID LIKE '%$data%' OR produk.Nama_Produk LIKE '%$data%' OR produk.Stok LIKE '%$data%' OR kategori.Nama_Kategori LIKE '%$data%' OR produk.Harga_Jual LIKE '%$data%' OR produk.Harga_Beli LIKE '%$data%') AND kategori.KategoriID = :kategori LIMIT :awal, :akhir";
+
+
+            $this->db->query($query);
+            $this->db->bind('kategori', $kategori);
+        }
+
         $this->db->bind('awal', $awalData);
         $this->db->bind('akhir', $jumlahDataPerHalaman);
         return $this->db->resultSet();
     }
 
-    public function countCariDataProduk($data)
+    public function countCariDataProduk($data, $kategori)
     {
-        $query = "SELECT produk.ProdukID, produk.Nama_Produk, produk.Stok,kategori.Nama_Kategori, produk.Harga_Jual, produk.Harga_Beli FROM produk INNER JOIN kategori ON produk.KategoriID = kategori.KategoriID WHERE produk.ProdukID LIKE '%$data%' OR produk.Nama_Produk LIKE '%$data%' OR produk.Stok LIKE '%$data%' OR kategori.Nama_Kategori LIKE '%$data%' OR produk.Harga_Jual LIKE '%$data%' OR produk.Harga_Beli LIKE '%$data%'";
 
-        $this->db->query($query);
+        if ($kategori == "all") {
+            $query = "SELECT produk.ProdukID, produk.Nama_Produk, produk.Stok,kategori.Nama_Kategori, produk.Harga_Jual, produk.Harga_Beli FROM produk INNER JOIN kategori ON produk.KategoriID = kategori.KategoriID WHERE produk.ProdukID LIKE '%$data%' OR produk.Nama_Produk LIKE '%$data%' OR produk.Stok LIKE '%$data%' OR kategori.Nama_Kategori LIKE '%$data%' OR produk.Harga_Jual LIKE '%$data%' OR produk.Harga_Beli LIKE '%$data%'";
+
+            $this->db->query($query);
+        } else {
+            $query = "SELECT produk.ProdukID, produk.Nama_Produk, produk.Stok,kategori.Nama_Kategori, produk.Harga_Jual, produk.Harga_Beli FROM produk INNER JOIN kategori ON produk.KategoriID = kategori.KategoriID WHERE (produk.ProdukID LIKE '%$data%' OR produk.Nama_Produk LIKE '%$data%' OR produk.Stok LIKE '%$data%' OR kategori.Nama_Kategori LIKE '%$data%' OR produk.Harga_Jual LIKE '%$data%' OR produk.Harga_Beli LIKE '%$data%') AND kategori.KategoriID = :kategori";
+
+            $this->db->query($query);
+            $this->db->bind('kategori', $kategori);
+        }
+
+
         return $this->db->resultSet();
     }
 
@@ -134,7 +150,7 @@ class Produk_model
 
     public function getJumlahOrder()
     {
-        $query = "SELECT COUNT(transaksi.ProdukID) AS jumlah,  (SUM(transaksi.TotalHarga)) AS pendapatan FROM transaksi
+        $query = "SELECT COUNT(transaksi.ProdukID) AS jumlah,  (SUM(transaksi.TotalHarga) - SUM(transaksi.kuantitas*produk.Harga_Beli)) AS pendapatan FROM transaksi
         INNER JOIN produk ON transaksi.ProdukID = produk.ProdukID
         WHERE produk.PenjualID = :id ";
         $this->db->query($query);
@@ -252,7 +268,7 @@ class Produk_model
     public function cariDataProdukPenjual($data, $id)
     {
 
-        $query = "SELECT produk.ProdukID, produk.Nama_Produk, produk.Stok,kategori.Nama_Kategori, produk.Harga_Jual, produk.Harga_Beli FROM produk INNER JOIN kategori ON produk.KategoriID = kategori.KategoriID WHERE produk.ProdukID LIKE '%$data%' OR produk.Nama_Produk LIKE '%$data%' OR produk.Stok LIKE '%$data%' OR kategori.Nama_Kategori LIKE '%$data%' OR produk.Harga_Jual LIKE '%$data%' OR produk.Harga_Beli LIKE '%$data%' AND produk.PenjualID=:id";
+        $query = "SELECT produk.ProdukID, produk.Nama_Produk, produk.Stok,kategori.Nama_Kategori, produk.Harga_Jual, produk.Harga_Beli FROM produk INNER JOIN kategori ON produk.KategoriID = kategori.KategoriID WHERE (produk.ProdukID LIKE '%$data%' OR produk.Nama_Produk LIKE '%$data%' OR produk.Stok LIKE '%$data%' OR kategori.Nama_Kategori LIKE '%$data%' OR produk.Harga_Jual LIKE '%$data%' OR produk.Harga_Beli LIKE '%$data%') AND produk.PenjualID=:id";
 
         $this->db->query($query);
         $this->db->bind('id', $id);
@@ -276,7 +292,8 @@ class Produk_model
     public function stokProduk()
     {
         $query = "SELECT Nama_Produk, Stok 
-        FROM produk WHERE PenjualID = :id AND Stok < 11
+        FROM produk WHERE PenjualID = :id
+        HAVING Stok < 11
         ORDER BY Stok LIMIT 3";
         $this->db->query($query);
         $this->db->bind('id', $_SESSION['user']['user'][0]['akun_id']);

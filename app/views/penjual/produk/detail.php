@@ -1,9 +1,9 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-7 col-lg-3 mt-5">
+        <div class="col-md-7 col-lg-3 mt-5" data-aos="fade-right">
             <img src="<?= BASEURL; ?>/img/s.png" class="" alt="..." style="width: 200px;">
         </div>
-        <div class="col-md-5 col-lg-9 mt-5">
+        <div class="col-md-5 col-lg-9 mt-5" data-aos="fade-right">
             <p class="fs-2 fw-bold lh-sm"><?= $data['produk'][0]['Nama_Produk']; ?></p>
             <p class="text-muted fs-6"><?= $data['produk'][0]['ProdukID']; ?> |
                 <ion-icon name="star-outline"></ion-icon>
@@ -13,7 +13,7 @@
                 <ion-icon name="star-outline"></ion-icon>
             </p>
             <form action="<?= BASEURL; ?>/produk/ubahDataBarang" method="post">
-                <div class="row">
+                <div class="row" data-aos="fade-right">
                     <div class="col-2">
                         <p class="fs-6 fw-bold ">Nama barang</p>
                     </div>
@@ -21,7 +21,7 @@
                         <input class="form-control" type="text" value="<?= $data['produk'][0]['Nama_Produk']; ?>" name="nama" aria-label="default input example">
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" data-aos="fade-right">
                     <div class="col-2">
                         <p class="fs-6 fw-bold ">Harga</p>
                     </div>
@@ -32,7 +32,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" data-aos="fade-right">
                     <div class="col-2">
                         <p class="fs-6 fw-bold ">Stok</p>
                     </div>
@@ -44,8 +44,8 @@
                 <div class="row mt-5">
                     <div class="col-5">
                         <div class="d-grid gap-2">
-                            <button type="submit" class="btn btn-primary">Simpan</button>
-                            <a href="<?= BASEURL; ?>/produk" type="button" class="btn btn-danger">Cancel</a>
+                            <button type="submit" class="btn btn-primary" data-aos="zoom-in-up" data-aos-delay="100">Simpan</button>
+                            <a href="<?= BASEURL; ?>/produk" type="button" class="btn btn-danger" data-aos="zoom-in-up" data-aos-delay="200">Cancel</a>
                         </div>
                     </div>
                 </div>

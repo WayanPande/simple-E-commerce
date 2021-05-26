@@ -7,7 +7,7 @@ class Analytics extends Controller
     {
         $data['judul'] = 'Analytics';
         $data['order'] = $this->modelPenjual('Analytics_model')->getAllOrder();
-        // var_dump($data['order']);
+        $data['jumlahProduk'] = $this->modelPenjual('Analytics_model')->getJumlahProduk($_SESSION['user']['user'][0]['akun_id']);
         $data['ratarata'] = $this->modelPenjual('Analytics_model')->getRataRata(0);
         $index = 0;
         foreach ($data['ratarata'] as $i) {
@@ -38,7 +38,7 @@ class Analytics extends Controller
     public function cariTanggal()
     {
         $data['judul'] = 'Halaman Analytics';
-
+        $data['jumlahProduk'] = $this->modelPenjual('Analytics_model')->getJumlahProduk($_SESSION['user']['user'][0]['akun_id']);
         $data['order'] = $this->modelPenjual('Analytics_model')->cariDataProdukTgl($_POST, $_SESSION['user']['user'][0]['akun_id']);
         $data['ratarata'] = $this->modelPenjual('Analytics_model')->getRataRata(0);
         $index = 0;
@@ -56,7 +56,7 @@ class Analytics extends Controller
     public function cari()
     {
         $data['judul'] = 'Halaman Analytics';
-
+        $data['jumlahProduk'] = $this->modelPenjual('Analytics_model')->getJumlahProduk($_SESSION['user']['user'][0]['akun_id']);
         $data['order'] = $this->modelPenjual('Analytics_model')->cariDataProduk($_POST['keyword'], $_SESSION['user']['user'][0]['akun_id']);
         $data['ratarata'] = $this->modelPenjual('Analytics_model')->getRataRata(0);
         $index = 0;

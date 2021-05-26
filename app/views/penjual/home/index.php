@@ -8,7 +8,7 @@ if (!isset($data['jumlah_order'][0]['pendapatan'])) {
 <br>
 <div class="container">
     <div class="col-lg-12 mt-5">
-        <div class="jumbotron">
+        <div class="jumbotron" data-aos="fade-right">
             <!-- <h1 class="display-4">Selamat Datang <?= $_SESSION['user']['user'][0]['nama']; ?></h1>
             <p class="lead">Hallo nama saya <?= $_SESSION['user']['user'][0]['nama']; ?></p> -->
             <h1 class="display-4">Penting hari ini</h1>
@@ -17,7 +17,7 @@ if (!isset($data['jumlah_order'][0]['pendapatan'])) {
     </div>
 
     <div class="row mt-5">
-        <div class="col-lg-3">
+        <div class="col-lg-3" data-aos="zoom-in">
             <div class="card h-100 text-white" style="background-color: #007FFF;">
                 <div class="row g-0">
                     <div class="col-md-4 mt-3">
@@ -36,7 +36,7 @@ if (!isset($data['jumlah_order'][0]['pendapatan'])) {
                 </div>
             </div>
         </div>
-        <div class="col-lg-3">
+        <div class="col-lg-3" data-aos="zoom-in" data-aos-delay="50">
             <div class="card h-100 text-white" style="background-color: #007FFF;">
                 <div class="row g-0">
                     <div class="col-md-4 mt-3">
@@ -55,7 +55,7 @@ if (!isset($data['jumlah_order'][0]['pendapatan'])) {
                 </div>
             </div>
         </div>
-        <div class="col-lg-3">
+        <div class="col-lg-3" data-aos="zoom-in" data-aos-delay="100">
             <div class="card h-100 text-white" style="background-color: #007FFF;">
                 <div class="row g-0">
                     <div class="col-md-4 mt-4">
@@ -73,7 +73,7 @@ if (!isset($data['jumlah_order'][0]['pendapatan'])) {
                 </div>
             </div>
         </div>
-        <div class="col-lg-3">
+        <div class="col-lg-3" data-aos="zoom-in" data-aos-delay="150">
             <div class="card h-100 text-white" style="background-color: #007FFF;">
                 <div class="row g-0">
                     <div class="col-md-4 mt-4">
@@ -93,7 +93,7 @@ if (!isset($data['jumlah_order'][0]['pendapatan'])) {
         </div>
     </div><!-- /.row -->
 
-    <div class="row mt-4">
+    <div class="row mt-4" data-aos="zoom-in">
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header bg-primary text-white">
@@ -127,7 +127,7 @@ if (!isset($data['jumlah_order'][0]['pendapatan'])) {
     </div><!-- /.row -->
 
     <div class="row mt-4">
-        <div class="col-lg-4">
+        <div class="col-lg-4" data-aos="zoom-in">
             <div class="card">
                 <div class="card-header bg-primary text-white pt-0 pb-0">
                     <p class="text-start mt-3" style="font-size: 20px;">
@@ -163,7 +163,7 @@ if (!isset($data['jumlah_order'][0]['pendapatan'])) {
                 </div>
             </div>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="50">
             <div class="card">
                 <div class="card-header bg-primary text-white pt-0 pb-0 mb-3">
                     <p class="text-start mt-3" style="font-size: 20px;">
@@ -213,7 +213,7 @@ if (!isset($data['jumlah_order'][0]['pendapatan'])) {
             </div>
         </div>
 
-        <div class="col-lg-4">
+        <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="100">
             <div class="card">
                 <div class="card-header bg-primary text-white pt-0 pb-0 mb-3">
                     <p class="text-start mt-3" style="font-size: 20px;">

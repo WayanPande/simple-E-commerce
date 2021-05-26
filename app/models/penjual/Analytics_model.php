@@ -26,11 +26,11 @@ class Analytics_model
     public function getRataRata($cek)
     {
         if ($cek == 1) {
-            $query = "SELECT transaksi.ProdukID, AVG(transaksi.Kuantitas) AS rata_rata FROM transaksi INNER JOIN produk 
+            $query = "SELECT transaksi.ProdukID, AVG(transaksi.Kuantitas) AS rata_rata, produk.Nama_Produk FROM transaksi INNER JOIN produk 
             ON transaksi.ProdukID = produk.ProdukID 
             WHERE produk.PenjualID = :id GROUP BY transaksi.ProdukID";
         } else {
-            $query = "SELECT transaksi.ProdukID, AVG(transaksi.Kuantitas) AS rata_rata FROM transaksi INNER JOIN produk 
+            $query = "SELECT transaksi.ProdukID, AVG(transaksi.Kuantitas) AS rata_rata, produk.Nama_Produk FROM transaksi INNER JOIN produk 
             ON transaksi.ProdukID = produk.ProdukID 
             WHERE produk.PenjualID = :id GROUP BY transaksi.ProdukID LIMIT 5";
         }
@@ -80,8 +80,18 @@ class Analytics_model
             $query = "SELECT id_transaksi, DATE(Tgl_Penjualan) AS tanggal, TIME(Tgl_Penjualan) AS jam, TotalHarga, produk.ProdukID, produk.Nama_Produk, kuantitas 
             FROM transaksi AS t INNER JOIN produk 
             ON t.ProdukID = produk.ProdukID 
-            WHERE produk.PenjualID = :id AND t.id_transaksi LIKE '%$data%' OR t.Tgl_Penjualan LIKE '%$data%' OR t.ProdukID LIKE '%$data%' OR produk.Nama_Produk LIKE '%$data%' OR t.kuantitas LIKE '%$data%'";
+            WHERE produk.PenjualID = :id AND (t.id_transaksi LIKE '%$data%' OR t.Tgl_Penjualan LIKE '%$data%' OR t.ProdukID LIKE '%$data%' OR produk.Nama_Produk LIKE '%$data%' OR t.kuantitas LIKE '%$data%')";
         }
+        $this->db->query($query);
+        $this->db->bind('id', $id);
+
+        return $this->db->resultSet();
+    }
+
+    public function getJumlahProduk($id)
+    {
+        $query = "SELECT kategori.Nama_Kategori, SUM(produk.Stok) AS jumlah FROM produk INNER JOIN kategori ON produk.KategoriID = kategori.KategoriID WHERE produk.PenjualID = :id GROUP BY kategori.KategoriID HAVING jumlah!=0";
+
         $this->db->query($query);
         $this->db->bind('id', $id);
 

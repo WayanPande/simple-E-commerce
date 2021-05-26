@@ -1,11 +1,11 @@
 <div class="container">
     <main>
-        <div class="py-5 text-center">
+        <div class="py-5 text-center" data-aos="fade-down">
             <h2>Checkout</h2>
         </div>
 
         <div class="row g-5">
-            <div class="col-md-5 col-lg-4 order-md-last">
+            <div class="col-md-5 col-lg-4 order-md-last" data-aos="fade-left">
                 <h4 class="d-flex justify-content-between align-items-center mb-3">
                     <span class="text-primary">Keranjang</span>
                     <span class="badge bg-primary rounded-pill"><?= $_SESSION['keranjang']['total']; ?></span>
@@ -33,7 +33,7 @@
                     </div>
                 </form>
             </div>
-            <div class="col-md-7 col-lg-8">
+            <div class="col-md-7 col-lg-8" data-aos="fade-right">
                 <h4 class="mb-3">Dikirim ke</h4>
                 <form class="needs-validation" novalidate method="post" action="<?= BASEURL; ?>/checkout/order">
                     <div class="row g-3">
@@ -80,18 +80,6 @@
                             </div>
                         </div>
 
-                    </div>
-
-                    <hr class="my-4">
-
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="same-address">
-                        <label class="form-check-label" for="same-address">Shipping address is the same as my billing address</label>
-                    </div>
-
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="save-info">
-                        <label class="form-check-label" for="save-info">Save this information for next time</label>
                     </div>
 
                     <hr class="my-4">

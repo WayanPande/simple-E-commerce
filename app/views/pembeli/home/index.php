@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center" data-aos="zoom-out-down">
         <div class="col-lg">
             <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-indicators">
@@ -32,7 +32,7 @@
 
 
     <div class="row mt-4">
-        <div class="col-sm-3">
+        <div class="col-sm-3" data-aos="fade-right">
             <div class="left-sidebar">
                 <h2>Category</h2>
                 <div class="panel-group category-products" id="accordian">
@@ -88,7 +88,7 @@
         </div>
         <div class="col-sm-9">
             <div class="features_items">
-                <h2 class="title text-center">Features Items</h2>
+                <h2 class="title text-center" data-aos="fade-left">Features Items</h2>
                 <div class="row">
                     <?php foreach ($data['produk'] as $prd) : ?>
                         <div class="col-sm-4 align-self-center" data-aos="zoom-in">

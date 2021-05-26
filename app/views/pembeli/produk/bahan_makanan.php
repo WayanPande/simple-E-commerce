@@ -1,12 +1,13 @@
 <br>
 
 <div class="container mt-3">
-    <h1>Daftar Produk Bahan Makanan</h1>
+    <h1 data-aos="fade-right">Daftar Bahan Makanan</h1>
     <div class="row justify-content-center mt-3">
-        <div class="col-9">
+        <div class="col-9" data-aos="zoom-out">
             <form class="d-flex" method="post" action="<?= BASEURL; ?>/produk/cariPembeli">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="keyword" name="keyword">
-                <button class="btn btn-outline-success" type="submit" id="tombol-cari">Search</button>
+                <input class="form-control me-2 text-center" type="search" placeholder="Search" aria-label="Search" id="keyword" name="keyword">
+                <input type="text" hidden value="K0001" name="hal">
+                <button class="btn btn-outline-success" type="submit" id="tombol-cari" name="cari">Search</button>
             </form>
         </div>
     </div>
@@ -16,7 +17,7 @@
         </div>
     </div>
     <div class="row justify-content-start mt-5">
-        <div class="col-sm-3">
+        <div class="col-sm-3" data-aos="fade-right">
             <div class="left-sidebar">
                 <h2>Kategori</h2>
                 <div class="panel-group category-products" id="accordian">
@@ -70,34 +71,6 @@
                 </div>
             </div>
             <div class="left-sidebar">
-                <h2>Lokasi</h2>
-                <div class="panel-group category-products" id="accordian">
-                    <div class="form-check ms-3">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            DKI Jakarta
-                        </label>
-                    </div>
-                    <div class="form-check ms-3">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            Jabodetabek
-                        </label>
-                    </div>
-                    <div class="form-check ms-3">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            Bali
-                        </label>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col align-self-end">
-                            <button class="btn btn-outline-success cek btn-sm" type="submit" id="tombol-cari">Terapkan</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="left-sidebar">
                 <h2>Harga</h2>
                 <div class="panel-group category-products" id="accordian">
                     <form action="<?= BASEURL; ?>/produk/cariHarga" method="POST">
@@ -105,7 +78,7 @@
                             <div class="col-10">
                                 <div class="input-group mb-3 ms-4">
                                     <span class="input-group-text" id="basic-addon1">Rp</span>
-                                    <input type="text" class="form-control" placeholder="Harga Minimum" aria-label="Username" aria-describedby="basic-addon1" name="minimum">
+                                    <input type="number" class="form-control" placeholder="Harga Minimum" aria-label="Username" aria-describedby="basic-addon1" name="minimum">
                                 </div>
                             </div>
                         </div>
@@ -114,7 +87,7 @@
                             <div class="col-10">
                                 <div class="input-group mb-3 ms-4">
                                     <span class="input-group-text" id="basic-addon1">Rp</span>
-                                    <input type="text" class="form-control" placeholder="Harga Maksimum" aria-label="Username" aria-describedby="basic-addon1" name="maksimum">
+                                    <input type="number" class="form-control" placeholder="Harga Maksimum" aria-label="Username" aria-describedby="basic-addon1" name="maksimum">
                                 </div>
                             </div>
                         </div>
@@ -130,7 +103,7 @@
         </div>
         <div class="col-lg-9">
             <div class="features_items">
-                <h2 class="title text-center">Features Items</h2>
+                <h2 class="title text-center" data-aos="fade-left">Features Items</h2>
                 <div class="row">
                     <?php foreach ($data['produk'] as $prd) : ?>
                         <div class="col-sm-3 align-self-center" data-aos="zoom-in">
