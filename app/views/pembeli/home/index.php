@@ -245,6 +245,12 @@
         position: relative;
     }
 
+    .product-image-wrapper:hover {
+        transform: scale(1.15);
+        box-shadow: 0 10px 10px rgba(0, 0, 0, .06), 0 4px 8px rgba(0, 0, 0, .06);
+        margin-left: 30px;
+        margin-right: 30px;
+    }
 
     .add-to-cart {
         background: #F5F5ED;

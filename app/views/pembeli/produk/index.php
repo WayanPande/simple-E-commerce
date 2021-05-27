@@ -292,6 +292,13 @@
         border-radius: 8px;
     }
 
+    .product-image-wrapper:hover {
+        transform: scale(1.15);
+        box-shadow: 0 10px 10px rgba(0, 0, 0, .06), 0 4px 8px rgba(0, 0, 0, .06);
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
     .single-products {
         position: relative;
     }

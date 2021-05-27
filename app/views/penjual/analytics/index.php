@@ -81,7 +81,7 @@
                 </div>
             </div>
             <div class="left-sidebar">
-                <h2>Jumlah produk</h2>
+                <h2>Jumlah stok produk</h2>
                 <div class="panel-group category-products" id="accordian">
                     <div class="row justify-content-center">
                         <div class="col-11">

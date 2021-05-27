@@ -1,9 +1,9 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-7 col-lg-3 mt-5">
+        <div class="col-md-7 col-lg-3 mt-5" data-aos="fade-right">
             <img src="<?= BASEURL; ?>/img/s.png" class="" alt="..." style="width: 200px;">
         </div>
-        <div class="col-md-5 col-lg-9 mt-5">
+        <div class="col-md-5 col-lg-9 mt-5" data-aos="fade-right">
             <p class="fs-2 fw-bold lh-sm"><?= $data['produk'][0]['Nama_Produk']; ?></p>
             <p class="text-muted fs-6"><?= $data['produk'][0]['ProdukID']; ?> |
                 <ion-icon name="star-outline"></ion-icon>
@@ -12,7 +12,7 @@
                 <ion-icon name="star-outline"></ion-icon>
                 <ion-icon name="star-outline"></ion-icon>
             </p>
-            <div class="row">
+            <div class="row" data-aos="fade-right">
                 <div class="col-2">
                     <p class="fs-6 fw-bold ">Harga</p>
                 </div>
@@ -21,7 +21,7 @@
                     <p class="fs-6">Harga sudah termasuk PPN</p>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" data-aos="fade-right">
                 <div class="col-2">
                     <p class="fs-6 fw-bold ">Estimasi</p>
                 </div>
@@ -30,7 +30,7 @@
                 </div>
             </div>
             <form action="<?= BASEURL; ?>/produk/keranjang/<?= $data['produk'][0]['ProdukID']; ?>" method="post">
-                <div class="row">
+                <div class="row" data-aos="fade-right">
                     <div class="col-2">
                         <p class="fs-6 fw-bold ">Jumlah</p>
                     </div>
@@ -44,7 +44,7 @@
                 </div>
                 <div class="row mt-5">
                     <div class="col">
-                        <button type="submit" class="btn btn-primary"><i class="bi bi-plus"></i> Keranjang</button>
+                        <button type="submit" class="btn btn-primary" data-aos="zoom-in" data-aos-delay="100"><i class="bi bi-plus"></i> Keranjang</button>
                     </div>
                 </div>
             </form>

@@ -39,7 +39,7 @@ class Produk_model
     public function getAllProdukPembeli($halamanAktif, $jumlahDataPerHalaman)
     {
         $awalData = ($jumlahDataPerHalaman * $halamanAktif) - $jumlahDataPerHalaman;
-        $query = "SELECT * FROM " . $this->table . " LIMIT :awal, :akhir";
+        $query = "SELECT * FROM " . $this->table . " ORDER BY Nama_Produk LIMIT :awal, :akhir";
         $this->db->query($query);
         $this->db->bind('awal', $awalData);
         $this->db->bind('akhir', $jumlahDataPerHalaman);
